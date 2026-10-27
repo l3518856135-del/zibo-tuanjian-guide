@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>团建地点参考</title>
+<link rel="stylesheet" href="leaflet/leaflet.min.css">
+<style>
+  :root{
+    --paper:#f7f3ec;
+    --paper-2:#efe8dc;
+    --ink:#23201c;
+    --muted:#7b7266;
+    --line:#ded4c4;
+    --accent:#c0502b;
+    --serif:"Songti SC","Noto Serif SC","Source Han Serif SC",SimSun,serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.7;}
+  img{display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 34px;}
+  .topbar{position:sticky;top:0;z-index:30;background:rgba(247,243,236,.92);
+    backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
+  .topbar .in{max-width:1180px;margin:0 auto;padding:14px 34px;display:flex;align-items:center;gap:28px;}
+  .topbar .brand{font-family:var(--serif);font-size:16px;letter-spacing:.04em;white-space:nowrap;}
+  .topbar nav{display:flex;gap:22px;margin-left:auto;font-size:13px;}
+  .topbar nav a{color:var(--muted);text-decoration:none;transition:color .25s;}
+  .topbar nav a:hover{color:var(--accent);}
+  .topbar .print{border:1px solid var(--line);background:transparent;color:var(--ink);
+    font-size:12.5px;padding:7px 13px;border-radius:99px;cursor:pointer;font-family:inherit;
+    transition:.25s;}
+  .topbar .print:hover{border-color:var(--accent);color:var(--accent);}
+
+  .hero{position:relative;height:calc(100svh - 57px);min-height:520px;overflow:hidden;
+    background:#2a241d;}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transform:scale(1.06);animation:heroIn 14s ease-out forwards;}
+  @keyframes heroIn{to{transform:scale(1);}}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(24,19,14,.5) 0%,rgba(24,19,14,.08) 42%,rgba(24,19,14,.78) 100%);}
+  .hero .inner{position:relative;z-index:2;height:100%;max-width:1180px;margin:0 auto;
+    padding:0 34px 78px;display:flex;flex-direction:column;justify-content:flex-end;color:#fdf9f2;}
+  .hero .eyebrow{font-size:12px;letter-spacing:.26em;opacity:.86;margin-bottom:20px;}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(38px,6vw,76px);
+    line-height:1.16;margin:0 0 18px;letter-spacing:.01em;}
+  .hero p{margin:0;font-size:14.5px;color:rgba(253,249,242,.82);letter-spacing:.02em;}
+  .hero .go{margin-top:30px;}
+  .hero .go a{display:inline-block;background:#fdf9f2;color:#23201c;text-decoration:none;
+    font-size:14px;padding:12px 26px;border-radius:99px;transition:.3s;}
+  .hero .go a:hover{background:var(--accent);color:#fff;}
+
+  .mapsec{padding:60px 0 0;}
+  .mapbox{height:480px;border:1px solid var(--line);border-radius:3px;background:var(--paper-2);}
+  .mapnote{margin:12px 0 0;font-size:12.5px;color:var(--muted);}
+  .mk{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;
+    border:2px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.35);}
+  .mk.school{width:auto;padding:0 12px;border-radius:99px;background:#23201c;font-size:12px;}
+  .amap{color:var(--accent);font-size:13px;text-decoration:none;border-bottom:1px solid rgba(192,80,43,.4);}
+  .amap:hover{border-bottom-color:var(--accent);}
+
+  .place{padding:72px 0 0;scroll-margin-top:70px;}
+  .place + .place{padding-top:88px;}
+  .shot{position:relative;overflow:hidden;background:var(--paper-2);cursor:zoom-in;}
+  .shot img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.2,1);}
+  .shot:hover img{transform:scale(1.035);}
+  .shot.main{aspect-ratio:16/9;border-radius:3px;}
+  .shot .cap{position:absolute;left:0;right:0;bottom:0;padding:34px 36px 30px;color:#fdf9f2;
+    background:linear-gradient(0deg,rgba(18,15,12,.74) 0%,rgba(18,15,12,.18) 62%,rgba(18,15,12,0) 100%);
+    pointer-events:none;}
+  .shot .cap .no{font-size:11.5px;letter-spacing:.28em;color:rgba(253,249,242,.72);}
+  .shot .cap h2{font-family:var(--serif);font-weight:600;margin:10px 0 6px;
+    font-size:clamp(26px,3.6vw,44px);line-height:1.2;}
+  .shot .cap .loc{font-size:13px;color:rgba(253,249,242,.8);letter-spacing:.02em;}
+
+  .lede{margin:24px 0 0;max-width:760px;font-size:16px;color:#3f3a33;}
+  .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:14px;margin-top:16px;}
+  .strip figure{margin:0;cursor:zoom-in;}
+  .strip img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;
+    transition:transform .9s cubic-bezier(.2,.7,.2,1);}
+  .strip figure:hover img{transform:scale(1.03);}
+  .strip figcaption{font-size:12.5px;color:var(--muted);margin-top:9px;letter-spacing:.02em;}
+
+  .spots{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);}
+  .spots h4{margin:0 0 4px;font-size:11.5px;letter-spacing:.2em;color:var(--accent);font-weight:700;
+    display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+  .spots h4 .hint{font-size:11px;letter-spacing:.04em;color:var(--muted);font-weight:400;}
+  .spot{display:flex;align-items:center;gap:14px;padding:10px 0;}
+  .spot + .spot{border-top:1px dashed var(--line);}
+  .spot .th{width:56px;height:56px;object-fit:cover;border-radius:3px;flex:none;background:var(--paper-2);cursor:zoom-in;}
+  .spot .sn{min-width:0;}
+  .spot .nm{font-size:14.5px;font-weight:600;line-height:1.4;}
+  .spot .nt{font-size:12.5px;color:var(--muted);margin-top:1px;line-height:1.5;}
+  .spot .tg{margin-left:auto;flex:none;font-size:11px;letter-spacing:.05em;padding:3px 10px;
+    border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap;}
+  .spot .tg.hot{border-color:rgba(192,80,43,.4);color:var(--accent);background:rgba(192,80,43,.06);}
+  .spot .sl{margin-top:4px;display:flex;gap:14px;flex-wrap:wrap;}
+  .spot .sl a{font-size:12px;color:var(--accent);text-decoration:none;
+    border-bottom:1px solid rgba(192,80,43,.35);transition:border-color .25s;}
+  .spot .sl a:hover{border-bottom-color:var(--accent);}
+
+  .meta{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;
+    margin-top:30px;padding-top:24px;border-top:1px solid var(--line);}
+  .meta h4{margin:0 0 9px;font-size:11.5px;letter-spacing:.2em;color:var(--accent);font-weight:700;}
+  .meta p{margin:0;font-size:14px;color:#4a443c;line-height:1.8;}
+
+  .place .shot.main,.place .strip,.place .spots,.place .meta,.place .lede{
+    opacity:0;transform:translateY(20px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1);}
+  .place.in .shot.main,.place.in .strip,.place.in .spots,.place.in .meta,.place.in .lede{opacity:1;transform:none;}
+  .place.in .strip{transition-delay:.09s;}
+  .place.in .spots{transition-delay:.13s;}
+  .place.in .meta{transition-delay:.17s;}
+
+  .filtersec{padding:36px 0 0;}
+  .fbar{display:flex;align-items:stretch;gap:36px;border:1px solid var(--line);
+    border-radius:4px;background:#fdfbf7;padding:20px 30px;}
+  .fsliders{display:flex;gap:24px;flex:none;}
+  .fvctl{display:flex;flex-direction:column;align-items:center;gap:10px;width:92px;}
+  .fvctl .fv-t{font-size:12.5px;letter-spacing:.14em;color:var(--muted);}
+  .fvctl input[type=range]{writing-mode:vertical-lr;direction:rtl;width:26px;height:150px;
+    accent-color:var(--accent);margin:0;cursor:pointer;padding:0;}
+  .fvctl input[type=range]:focus-visible{outline:2px solid rgba(192,80,43,.4);outline-offset:3px;border-radius:6px;}
+  .fvctl .fv-val{font-size:14px;font-weight:700;color:var(--accent);
+    font-variant-numeric:tabular-nums;white-space:nowrap;min-width:88px;text-align:center;}
+  .fside{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px;
+    border-left:1px dashed var(--line);padding-left:34px;}
+  .fbar-foot{margin-top:auto;display:flex;align-items:baseline;gap:16px;}
+  .fst{font-size:13px;color:var(--muted);flex:1;min-width:0;}
+  .fst b{color:var(--accent);}
+  .freset{border:1px solid var(--line);background:transparent;color:var(--muted);
+    font-family:inherit;font-size:12px;padding:4px 15px;border-radius:99px;cursor:pointer;
+    transition:all .2s;flex:none;}
+  .freset:hover{border-color:var(--accent);color:var(--accent);}
+  .fseg .segbtns{position:relative;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);
+    border-radius:99px;padding:3px;background:var(--paper);}
+  .fseg .segbtns::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);
+    background:var(--accent);border-radius:99px;transition:transform .28s cubic-bezier(.2,.7,.2,1);}
+  .fseg .segbtns[data-v="8"]::before{transform:translateX(100%);}
+  .fseg .segb{position:relative;z-index:1;background:none;border:0;font-family:inherit;font-size:12.5px;
+    padding:6px 14px;border-radius:99px;cursor:pointer;color:var(--muted);transition:color .28s;}
+  .fseg .segb.on{color:#fdf9f2;}
+  .ftags{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .ftags .tl{font-size:12.5px;color:var(--muted);margin-right:6px;}
+  .tagb{border:1px solid var(--line);background:transparent;color:var(--ink);font-family:inherit;
+    font-size:12px;padding:5px 14px;border-radius:99px;cursor:pointer;transition:all .2s;}
+  .tagb:hover{border-color:var(--accent);color:var(--accent);}
+  .tagb.on{background:var(--accent);border-color:var(--accent);color:#fdf9f2;}
+  .place{transition:opacity .45s ease,filter .45s ease;position:relative;}
+  .place.dim{opacity:.16;filter:grayscale(1);}
+  .place .ghost{position:absolute;top:-14px;right:22px;z-index:0;font-family:var(--serif);
+    font-size:clamp(110px,14vw,190px);line-height:1;color:transparent;
+    -webkit-text-stroke:1.5px rgba(192,80,43,.2);pointer-events:none;user-select:none;}
+  .place .wrap{position:relative;z-index:1;}
+  .place .rec{position:absolute;top:24px;right:24px;z-index:3;background:var(--accent);color:#fdf9f2;
+    font-family:var(--serif);font-size:12px;letter-spacing:.32em;text-indent:.32em;
+    padding:10px 7px;border-radius:2px;writing-mode:vertical-rl;box-shadow:0 6px 18px rgba(60,30,10,.3);}
+  .sale{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;margin-top:16px;
+    padding:11px 16px;border:1px dashed var(--line);border-radius:4px;}
+  .sale .st{font-size:11.5px;letter-spacing:.2em;color:var(--accent);font-weight:700;}
+  .sale a{font-size:13px;color:var(--accent);text-decoration:none;
+    border-bottom:1px solid rgba(192,80,43,.35);transition:border-color .25s;}
+  .sale a:hover{border-bottom-color:var(--accent);}
+  .sale .sn2{font-size:11.5px;color:var(--muted);}
+
+  footer{margin-top:96px;border-top:1px solid var(--line);padding:30px 0 54px;}
+  footer p{margin:0;font-size:12.5px;color:var(--muted);}
+
+  /* 大图查看 */
+  .lb{position:fixed;inset:0;z-index:90;background:rgba(14,12,10,.95);
+    display:none;padding:56px 20px 28px;}
+  .lb.on{display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .lb img{max-width:94vw;max-height:78vh;object-fit:contain;}
+  .lb .lbcap{margin-top:18px;color:#f2eadf;font-size:13.5px;letter-spacing:.02em;text-align:center;}
+  .lb button{position:absolute;border:none;background:rgba(255,255,255,.1);color:#fdf9f2;
+    width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;font-family:inherit;
+    display:flex;align-items:center;justify-content:center;transition:background .25s;}
+  .lb button:hover{background:rgba(255,255,255,.24);}
+  .lb .x{top:20px;right:22px;}
+  .lb .prev{left:22px;top:50%;transform:translateY(-50%);}
+  .lb .next{right:22px;top:50%;transform:translateY(-50%);}
+
+  @media (max-width:820px){
+    .wrap,.topbar .in,.hero .inner{padding-left:22px;padding-right:22px;}
+    .topbar nav{display:none;}
+    .topbar .in{gap:12px;}
+    .topbar .print{margin-left:auto;}
+    .hero{height:calc(100svh - 53px);min-height:440px;}
+    .hero .inner{padding-bottom:54px;}
+    .intro{padding-top:52px;}
+    .mapsec{padding-top:40px;}
+    .mapbox{height:340px;}
+    .place,.place + .place{padding-top:56px;}
+    .shot.main{aspect-ratio:4/3;}
+    .shot .cap{padding:22px 20px 20px;}
+    .meta{grid-template-columns:1fr;gap:20px;}
+    .spot{gap:11px;}
+    .spot .th{width:48px;height:48px;}
+    .spot .tg{font-size:10.5px;padding:2px 8px;}
+    .fbar{flex-direction:column;gap:20px;padding:16px 18px;}
+    .fsliders{width:100%;justify-content:space-around;gap:12px;}
+    .fvctl{width:46%;max-width:280px;}
+    .fvctl input[type=range]{writing-mode:horizontal-tb;direction:ltr;width:100%;height:26px;}
+    .fside{border-left:0;padding-left:0;border-top:1px dashed var(--line);padding-top:16px;}
+    .place .ghost{display:none;}
+    .place .rec{top:14px;right:12px;padding:8px 6px;font-size:11px;}
+    .lb .prev{left:10px;} .lb .next{right:10px;}
+  }
+  @media print{
+    .topbar,.hero .go,.lb,.mapsec{display:none !important;}
+    .hero{height:auto;min-height:0;}
+    .hero img{position:static;height:auto;animation:none;transform:none;}
+    .hero::after{display:none;}
+    .hero .inner{color:var(--ink);padding:34px 0 20px;position:static;height:auto;}
+    .hero p{color:var(--muted);}
+    body{background:#fff;}
+    .place{break-inside:avoid;padding-top:34px;}
+    .place.dim{opacity:1 !important;filter:none !important;}
+    .place .ghost{display:none;}
+    .filtersec{display:none !important;}
+    .place .shot.main,.place .strip,.place .spots,.place .meta,.place .lede{opacity:1 !important;transform:none !important;}
+    .strip{grid-template-columns:repeat(3,1fr);}
+    .spot{break-inside:avoid;}
+    .shot,.strip img{border-radius:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="in">
+    <div class="brand">团建地点参考</div>
+    <nav>
+      <a href="#a">周村古商城</a>
+      <a href="#b">文昌湖</a>
+      <a href="#c">凤凰山</a>
+      <a href="#d">玉黛湖</a>
+      <a href="#e">红叶柿岩</a>
+    </nav>
+    <button class="print" onclick="window.print()">打印 / 存 PDF</button>
+  </div>
+</div>
+
+<header class="hero">
+  <img src="images/hero.jpg" alt="红叶柿岩红叶季航拍">
+  <div class="inner">
+    <div class="eyebrow">淄博周边 · 秋季</div>
+    <h1>团建地点参考</h1>
+    <p>周村古商城 · 文昌湖 · 凤凰山 · 玉黛湖 · 红叶柿岩</p>
+    <div class="go"><a href="#a">往下看</a></div>
+  </div>
+</header>
+
+<section class="mapsec">
+  <div class="wrap">
+    <div class="mapbox" id="map"></div>
+    <p class="mapnote">位置示意：深色圆点为学校，红色圆点为五个备选地点，点圆点可看车程；地图可拖动、缩放。</p>
+  </div>
+</section>
+
+<section class="filtersec">
+  <div class="wrap">
+    <div class="fbar">
+      <div class="fsliders">
+        <div class="fvctl">
+          <span class="fv-t">车程</span>
+          <input type="range" id="fTime" min="15" max="60" step="5" value="60" aria-label="能接受的车程上限">
+          <output class="fv-val" id="fTimeV">60 分钟+</output>
+        </div>
+        <div class="fvctl">
+          <span class="fv-t">人均</span>
+          <input type="range" id="fPrice" min="90" max="230" step="10" value="230" aria-label="能接受的人均花费上限">
+          <output class="fv-val" id="fPriceV">230 元+</output>
+        </div>
+      </div>
+      <div class="fside">
+        <div class="fseg">
+          <div class="segbtns" id="seg" data-v="8">
+            <button class="segb" data-v="4" type="button">半天</button>
+            <button class="segb on" data-v="8" type="button">一日</button>
+          </div>
+        </div>
+        <div class="ftags" id="ftags"><span class="tl">想玩（满足任一即可）：</span></div>
+        <div class="fbar-foot">
+          <span class="fst" id="fStatus">拖动滑条、点亮标签，筛选地点。</span>
+          <button class="freset" id="fReset" type="button">重置</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="list"></div>
+
+<footer>
+  <div class="wrap">
+    <p>照片来自景区官方发布与公开报道，仅作选点参考；具体开放项目与现场情况以出行时为准。</p>
+  </div>
+</footer>
+
+<div class="lb" id="lb">
+  <button class="x" aria-label="关闭">×</button>
+  <button class="prev" aria-label="上一张">‹</button>
+  <img id="lbImg" alt="">
+  <div class="lbcap" id="lbCap"></div>
+  <button class="next" aria-label="下一张">›</button>
+</div>
+
+<script src="leaflet/leaflet.min.js"></script>
+<script>
+const PLACES = [
+  {
+    id:"a", no:"01", name:"周村古商城", zh:"壹", rec:true, sale:{links:[{l:"官网购票页 ↗",u:"https://www.zhoucungushangcheng.com/menpiaoyuding/"}],note:"周村古商城官网 · 学生证免通票，实时票价以官网与现场为准"},
+    loc:"周村区 · 古商城景区　|　约 8 公里 · 车程约 20 分钟",
+    cover:"images/zhoucun.jpg", coverCap:"周村大街全貌",
+    lede:"一条完整的明清商业街。牌坊、大染坊、票号、烧饼铺都在这条街上，从街头走到街尾，一整套老商业的运作方式就看完了。",
+    scenes:[
+      {src:"images/a_paifang.jpg", cap:"银子市：古商城里的老街巷，一路都是明清铺面"},
+      {src:"images/a_shaobing.jpg", cap:"周村烧饼：在烧饼博物馆现场看芝麻烧饼怎么打出来"},
+      {src:"images/a_night.jpg", cap:"花灯季的大街：入夜后整条街挂满花灯"}
+    ],
+    spots:[
+      {n:"大街 · 银子市 · 丝市街", d:"主街定向、分组拍照打卡，一条街从头走到尾", t:"学生证免通票"},
+      {n:"周村烧饼博物馆", d:"看师傅现场打烧饼，顺手买伴手礼", t:"免费", img:"images/a_shaobing.jpg"},
+      {n:"大染坊 · 票号展馆", d:"情景式展馆，适合分组跟着讲解走", t:"含在通票"}
+    ],
+    notice:"驻淄大学生凭学生证免通票；周末游客多，团体要提前在公众号预约。"
+  },
+  {
+    id:"b", no:"02", name:"文昌湖", zh:"贰", rec:true, sale:{note:"环湖区域免费开放，无需购票；营地烧烤、露营位等项目单独收费"},
+    loc:"文昌湖省级旅游度假区　|　约 30 公里 · 车程约 40 分钟",
+    cover:"images/wenchang.jpg", coverCap:"文昌湖湖面",
+    lede:"大片沙滩、开阔湖面和一条贴着湖岸的环湖路，是这几个地方里视野最舒展的，适合只想看看水、走一走的那种活动。",
+    scenes:[
+      {src:"images/b_beach.jpg", cap:"湖滨沙滩：天气好的时候沙滩上全是帐篷和遮阳伞"},
+      {src:"images/b_camp.jpg", cap:"湖边露营地：帐篷、天幕、草坪，能坐一下午"},
+      {src:"images/b_road.jpg", cap:"环湖路：徒步、骑行都走这条路"}
+    ],
+    spots:[
+      {n:"多米营地烧烤区", d:"湖边营位，烤炉、桌椅到位，食材可自带或让营地代购", t:"需预订", hot:true, img:"images/spot_bbq.jpg"},
+      {n:"湖滨沙滩", d:"沙滩、木栈道，草坪游戏和放风筝都在这一片", t:"免费", img:"images/b_beach.jpg"},
+      {n:"环湖路", d:"贴着湖岸的徒步、骑行线路，边走边看湖", t:"免费", img:"images/b_road.jpg"},
+      {n:"游船码头", d:"11 月起基本停航，想坐船要提前打电话确认", t:"看季节"}
+    ],
+    notice:"11 月水上项目基本停运，去之前问一下；湖边风大，比市区冷一档。"
+  },
+  {
+    id:"c", no:"03", name:"凤凰山", zh:"叁",
+    loc:"周村区南郊镇山头村　|　约 10 公里 · 车程约 15 分钟，离校区最近",
+    cover:"images/fenghuang.jpg", coverCap:"山头村凤凰山下的湖面与山门",
+    lede:"山头村这一片把采摘园、锦鲤基地、农家宴、露营地和凤凰山登山串在了一起，村子本身也整体修过，是几个选项里路上最省时间的。",
+    scenes:[
+      {src:"images/c_pick.jpg", cap:"采摘园：秋天正是摘苹果的时候"},
+      {src:"images/c_koi.jpg", cap:"锦鲤观赏基地：池边有木廊和凉亭"},
+      {src:"images/c_village.jpg", cap:"山头村一带：村舍、农田和后面的凤凰山"}
+    ],
+    spots:[
+      {n:"采摘园", d:"当季果蔬现摘，11 月以苹果和大棚品类为主", t:"看季节", img:"images/c_pick.jpg", tel:"13853355365"},
+      {n:"锦鲤观赏基地", d:"池边木廊和凉亭，参观不收费", t:"免费", img:"images/c_koi.jpg"},
+      {n:"自驾车露营地", d:"草坪营位带水电，白天活动或过夜都行", t:"需预订", hot:true, tel:"16653317739"},
+      {n:"农家宴 · 山头村农家院", d:"土灶大锅炖、柴火菜，按桌提前订", t:"需预订", hot:true, img:"images/spot_nongjia.jpg"},
+      {n:"凤凰山登山步道", d:"从山门广场起步的短途线路，一小时能往返", t:"免费", img:"images/c_village.jpg"}
+    ],
+    notice:"各点位是分散经营的，要提前串成一条线、逐个确认接待能力；11 月能摘的品类有限。"
+  },
+  {
+    id:"d", no:"04", name:"玉黛湖", zh:"肆",
+    loc:"张店区湖田镇　|　约 25 公里 · 车程约 30 分钟",
+    cover:"images/yudai.jpg", coverCap:"玉黛湖园区与湖面",
+    lede:"生态园、大草坪、湖面和水上长廊餐饮都在同一个园区里，活动怎么排、饭在哪吃都在一个门里解决，组织起来最省心。",
+    scenes:[
+      {src:"images/d_bbq.jpg", cap:"水上长廊：沿湖一排木屋餐位，可以吃饭"},
+      {src:"images/d_lantern.jpg", cap:"冬季花灯：园区每年办灯会，晚上最好看"},
+      {src:"images/d_ski.jpg", cap:"园区滑雪场：11 月下旬后看气温开板"}
+    ],
+    spots:[
+      {n:"园区大草坪", d:"团建游戏、拔河、飞盘的主场地", t:"含在门票"},
+      {n:"水上长廊餐饮区", d:"沿湖一排木屋餐位，团餐提前订", t:"另收费", hot:true, img:"images/d_bbq.jpg"},
+      {n:"冬季花灯会", d:"每年办灯会，夜场最好看", t:"看季节", img:"images/d_lantern.jpg"},
+      {n:"滑雪场", d:"11 月下旬起看气温开板", t:"看季节", img:"images/d_ski.jpg"}
+    ],
+    notice:"滑雪场开板看气温，得临近再确认；园区大，最好提前要一张平面图。"
+  },
+  {
+    id:"e", no:"05", name:"红叶柿岩", zh:"伍", rec:true, sale:{links:[{l:"景区官方介绍 ↗",u:"http://www.sdwenlv.com/content2/show-6063.aspx"}],note:"山东文旅官网 · 门票建议在美团 / 抖音 App 内搜「红叶柿岩」购买"},
+    loc:"博山区域城镇和尚房村　|　约 50 公里 · 车程约 60 分钟",
+    cover:"images/hero.jpg", coverCap:"红叶柿岩红叶季航拍",
+    lede:"一座山把红叶、柿岩古村和山地游乐装在一起，进山不用买大门票，是这个季节视觉冲击力最强的一个。",
+    scenes:[
+      {src:"images/hongye.jpg", cap:"红叶季：山坡整片变红，山下就是古村"},
+      {src:"images/e_slide.jpg", cap:"玻璃水滑道：从山上盘下来的环形滑道"},
+      {src:"images/e_village.jpg", cap:"柿岩古村：石头房子，晚上亮灯"}
+    ],
+    spots:[
+      {n:"玻璃水滑道", d:"从山上盘下来的环形玻璃滑道，会溅水", t:"约 80 元", hot:true, img:"images/e_slide.jpg"},
+      {n:"山地滑车", d:"戴头盔自己驾滑车下山，方向速度都能控", t:"约 60 元", hot:true, img:"images/spot_sled.jpg"},
+      {n:"穿越云端彩虹步道", d:"架在山间的彩色步道，穿裙子拖鞋不能上", t:"约 35 元", hot:true, img:"images/spot_cloud.jpg"},
+      {n:"柿岩古村夜游", d:"石头房子亮灯后的夜游线路", t:"免费", img:"images/e_village.jpg"}
+    ],
+    notice:"车程最远，来回近两小时；山上风大、台阶多，得穿运动鞋；项目单独收费，涉水项目冬季可能停运。"
+  }
+];
+
+const list = document.getElementById("list");
+list.innerHTML = PLACES.map(p=>`
+  <section class="place" id="${p.id}">
+    ${p.zh?`<div class="ghost" aria-hidden="true">${p.zh}</div>`:""}
+    <div class="wrap">
+      <div class="shot main" data-g="${p.id}" data-i="-1" data-cap="${p.name} · ${p.coverCap}">
+        <img src="${p.cover}" alt="${p.name}">
+        ${p.rec?`<div class="rec">重点推荐</div>`:""}
+        <div class="cap">
+          <div class="no">${p.no}</div>
+          <h2>${p.name}</h2>
+          <div class="loc">${p.loc}</div>
+        </div>
+      </div>
+      <p class="lede">${p.lede}</p>
+      <div class="strip">
+        ${p.scenes.map((s,i)=>`
+          <figure data-g="${p.id}" data-i="${i}">
+            <img src="${s.src}" alt="${s.cap}">
+            <figcaption>${s.cap}</figcaption>
+          </figure>`).join("")}
+      </div>
+      ${p.sale?`<div class="sale"><span class="st">购票</span>${(p.sale.links||[]).map(k=>`
+        <a href="${k.u}" target="_blank" rel="noopener">${k.l}</a>`).join("")}<span class="sn2">${p.sale.note}</span></div>`:""}
+      <div class="spots">
+        <h4>具体在哪儿玩<span class="hint">小图为活动示意，开放情况以现场为准</span></h4>
+        ${p.spots.map(s=>`
+          <div class="spot">
+            ${s.img?`<img class="th" src="${s.img}" alt="${s.n}" data-g="${p.id}">`:""}
+            <div class="sn">
+              <div class="nm">${s.n}</div>
+              <div class="nt">${s.d}</div>
+              ${s.tel?`<div class="sl"><a href="tel:${s.tel}">电话 ${s.tel}</a></div>`:""}
+            </div>
+            <span class="tg${s.hot?" hot":""}">${s.t}</span>
+          </div>`).join("")}
+      </div>
+      <div class="meta">
+        <div><h4>位置</h4><p>${p.loc}<br><a class="amap" data-amap="${p.id}" target="_blank" rel="noopener">在高德地图中打开 ↗</a></p></div>
+        <div><h4>要注意</h4><p>${p.notice}</p></div>
+      </div>
+    </div>
+  </section>
+`).join("");
+
+/* 滚动出现 */
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+},{threshold:.14});
+document.querySelectorAll(".place").forEach(el=>io.observe(el));
+
+/* 筛选：车程/人均滑条 + 半天/一日切换 + 标签，同时作用于页面区块和地图圆点 */
+const FILTER = {
+  a:{t:20,p:90, h:4, tags:["夜景","免大门票"]},
+  b:{t:40,p:200,h:8, tags:["烧烤","露营","徒步骑行"]},
+  c:{t:15,p:130,h:4, tags:["采摘","农家宴","露营"]},
+  d:{t:30,p:170,h:8, tags:["烧烤","拓展项目","夜景"]},
+  e:{t:60,p:230,h:8, tags:["刺激项目","夜景","免大门票"]}
+};
+const TAGS = ["烧烤","采摘","露营","农家宴","刺激项目","拓展项目","夜景","免大门票","徒步骑行"];
+const placeMarkers = {};
+const selTags = new Set();
+let durV = 8;
+const fTime = document.getElementById("fTime"),
+      fPrice = document.getElementById("fPrice"),
+      seg = document.getElementById("seg"),
+      ftags = document.getElementById("ftags"),
+      fTimeV = document.getElementById("fTimeV"),
+      fPriceV = document.getElementById("fPriceV"),
+      fStatus = document.getElementById("fStatus");
+
+function applyFilter(){
+  const tv = +fTime.value, pv = +fPrice.value;
+  fTimeV.textContent = tv >= 60 ? "60 分钟+" : "≤ " + tv + " 分钟";
+  fPriceV.textContent = pv >= 230 ? "230 元+" : "≤ " + pv + " 元";
+  let m = 0;
+  document.querySelectorAll(".place").forEach(el=>{
+    const f = FILTER[el.id];
+    const ok = f.t <= tv && f.p <= pv && f.h <= durV
+      && (selTags.size===0 || [...selTags].some(t=>f.tags.includes(t)));
+    el.classList.toggle("dim", !ok);
+    const mk = placeMarkers[el.id];
+    if(mk){
+      mk.setOpacity(ok ? 1 : 0.18);
+      const me = mk.getElement();
+      if(me) me.style.filter = ok ? "" : "grayscale(1)";
+    }
+    if(ok) m++;
+  });
+  const idle = tv >= 60 && pv >= 230 && durV === 8 && selTags.size === 0;
+  if(idle){
+    fStatus.innerHTML = "拖动滑条、点亮标签，筛选地点。";
+  }else if(m === 0){
+    fStatus.innerHTML = "<b>没有地点同时满足</b>，放宽一点试试。";
+  }else{
+    fStatus.innerHTML = `<b>${m} / 5</b> 个地点符合，地图上不符合的已变灰。`;
+  }
+}
+fTime.addEventListener("input", applyFilter);
+fPrice.addEventListener("input", applyFilter);
+seg.addEventListener("click", e=>{
+  const b = e.target.closest(".segb");
+  if(!b) return;
+  seg.dataset.v = b.dataset.v;
+  seg.querySelectorAll(".segb").forEach(x=>x.classList.toggle("on", x===b));
+  durV = +b.dataset.v;
+  applyFilter();
+});
+ftags.insertAdjacentHTML("beforeend",
+  TAGS.map(t=>`<button class="tagb" data-t="${t}" type="button">${t}</button>`).join(""));
+ftags.addEventListener("click", e=>{
+  const b = e.target.closest(".tagb");
+  if(!b) return;
+  b.classList.toggle("on");
+  if(b.classList.contains("on")) selTags.add(b.dataset.t); else selTags.delete(b.dataset.t);
+  applyFilter();
+});
+document.getElementById("fReset").addEventListener("click", ()=>{
+  fTime.value = 60; fPrice.value = 230;
+  seg.dataset.v = "8";
+  seg.querySelectorAll(".segb").forEach(x=>x.classList.toggle("on", x.dataset.v==="8"));
+  durV = 8; selTags.clear();
+  ftags.querySelectorAll(".tagb").forEach(b=>b.classList.remove("on"));
+  applyFilter();
+});
+applyFilter();
+
+/* 大图查看 */
+const lb = document.getElementById("lb"),
+      lbImg = document.getElementById("lbImg"),
+      lbCap = document.getElementById("lbCap");
+let cur = {g:null, imgs:[], idx:0};
+
+function groupOf(id){
+  const p = PLACES.find(x=>x.id===id);
+  return [{src:p.cover, cap:p.name+" · "+p.coverCap}].concat(p.scenes.map(s=>({src:s.src, cap:s.cap})));
+}
+/* groupOf 保留供调试；灯箱实际从 DOM 收集，见 openLb */
+function openLb(el){
+  const g = el.dataset.g;
+  const els = [...document.querySelectorAll(`[data-g="${g}"]`)];
+  cur.g = g;
+  cur.imgs = els.map(x=>{
+    const img = x.tagName==="IMG" ? x : x.querySelector("img");
+    const fc = x.closest("figure");
+    const fig = fc ? fc.querySelector("figcaption") : null;
+    const cap = x.dataset.cap || (fig ? fig.innerText : "") || x.alt || "";
+    return {src: img.src, cap: cap};
+  });
+  cur.idx = Math.max(0, els.indexOf(el));
+  render2();
+  lb.classList.add("on"); document.body.style.overflow = "hidden";
+}
+function render2(){
+  const it = cur.imgs[cur.idx];
+  lbImg.src = it.src; lbImg.alt = it.cap; lbCap.textContent = it.cap;
+}
+function closeLb(){ lb.classList.remove("on"); document.body.style.overflow = ""; }
+function step(d){ cur.idx = (cur.idx + d + cur.imgs.length) % cur.imgs.length; render2(); }
+
+document.addEventListener("click", e=>{
+  const t = e.target.closest("[data-g]");
+  if(t && !lb.contains(e.target)){ openLb(t); return; }
+  if(e.target.closest(".lb .x")) closeLb();
+  else if(e.target.closest(".lb .prev")) step(-1);
+  else if(e.target.closest(".lb .next")) step(1);
+  else if(e.target === lb) closeLb();
+});
+document.addEventListener("keydown", e=>{
+  if(!lb.classList.contains("on")) return;
+  if(e.key === "Escape") closeLb();
+  if(e.key === "ArrowLeft") step(-1);
+  if(e.key === "ArrowRight") step(1);
+});
+
+/* 位置地图（高德底图，WGS84 转 GCJ02） */
+if(window.L){
+  function wgs2gcj(wgsLat, wgsLng){
+    const a=6378245.0, ee=0.00669342162296594323;
+    function tL(x,y){return -100+2*x+3*y+0.2*y*y+0.1*x*y+0.2*Math.sqrt(Math.abs(x))
+      +(20*Math.sin(6*x*Math.PI)+20*Math.sin(2*x*Math.PI))*2/3
+      +(20*Math.sin(y*Math.PI)+40*Math.sin(y/3*Math.PI))*2/3
+      +(160*Math.sin(y/12*Math.PI)+320*Math.sin(y*Math.PI/30))*2/3;}
+    function tB(x,y){return 300+x+2*y+0.1*x*x+0.1*x*y+0.1*Math.sqrt(Math.abs(x))
+      +(20*Math.sin(6*x*Math.PI)+20*Math.sin(2*x*Math.PI))*2/3
+      +(20*Math.sin(x*Math.PI)+40*Math.sin(x/3*Math.PI))*2/3
+      +(150*Math.sin(x/12*Math.PI)+300*Math.sin(x/30*Math.PI))*2/3;}
+    let dLat=tB(wgsLng-105,wgsLat-35), dLng=tL(wgsLng-105,wgsLat-35);
+    const radLat=wgsLat/180*Math.PI; let magic=Math.sin(radLat);
+    magic=1-ee*magic*magic; const sq=Math.sqrt(magic);
+    dLat=(dLat*180)/((a*(1-ee))/(magic*sq)*Math.PI);
+    dLng=(dLng*180)/(a/sq*Math.cos(radLat)*Math.PI);
+    return [wgsLat+dLat, wgsLng+dLng];
+  }
+  const SCHOOL=[36.817,117.822];   /* 山东农业工程学院淄博校区（示意） */
+  const SPOTS=[
+    {id:"a", lat:36.803, lng:117.852},
+    {id:"b", lat:36.660, lng:117.865},
+    {id:"c", lat:36.752, lng:117.872},
+    {id:"d", lat:36.832, lng:118.072},
+    {id:"e", lat:36.528, lng:117.815}
+  ];
+  const map=L.map("map",{scrollWheelZoom:false});
+  L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
+    {subdomains:"1234", maxZoom:18, attribution:"© 高德地图"}).addTo(map);
+  const bnds=[];
+  const gS=wgs2gcj(SCHOOL[0],SCHOOL[1]);
+  L.marker(gS,{icon:L.divIcon({className:"",html:'<div class="mk school">学校</div>',iconSize:[64,26],iconAnchor:[32,13]})})
+    .addTo(map).bindPopup("<b>山东农业工程学院淄博校区</b><br>周村区鲁泰大道6666号");
+  bnds.push(gS);
+  SPOTS.forEach((s,i)=>{
+    const p=PLACES.find(x=>x.id===s.id);
+    const g=wgs2gcj(s.lat,s.lng); bnds.push(g);
+    const km=(p.loc.match(/约 (\d+) 公里/)||[])[1];
+    const dv=(p.loc.match(/车程约 (\d+) 分钟/)||[])[1];
+    const mk=L.marker(g,{icon:L.divIcon({className:"",html:`<div class="mk">${i+1}</div>`,iconSize:[26,26],iconAnchor:[13,13]})})
+      .addTo(map).bindPopup(`<b>${p.name}</b><br>距学校约 ${km} 公里 · 车程约 ${dv} 分钟<br><a href="#${p.id}">查看这个地点 ↓</a>`);
+    placeMarkers[s.id]=mk;
+  });
+  map.fitBounds(bnds,{padding:[46,46],maxZoom:11});
+  applyFilter();
+  /* 各地点“在高德地图中打开”链接 */
+  document.querySelectorAll("[data-amap]").forEach(el=>{
+    const s=SPOTS.find(x=>x.id===el.dataset.amap);
+    const p=PLACES.find(x=>x.id===s.id);
+    const g=wgs2gcj(s.lat,s.lng);
+    el.href=`https://uri.amap.com/marker?position=${g[1].toFixed(5)},${g[0].toFixed(5)}&name=${encodeURIComponent(p.name)}`;
+  });
+}
+</script>
+</body>
+</html>
