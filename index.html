@@ -527,7 +527,7 @@ list.innerHTML = PLACES.map(p=>`
     ${p.zh?`<div class="ghost" aria-hidden="true">${p.zh}</div>`:""}
     <div class="wrap">
       <div class="shot main" data-g="${p.id}" data-i="-1" data-cap="${p.name} · ${p.coverCap}">
-        <img src="${p.cover}" alt="${p.name}">
+        <img loading="lazy" src="${p.cover}" alt="${p.name}">
         ${p.rec?`<div class="rec">重点推荐</div>`:""}
         <div class="cap">
           <div class="no">${p.no}</div>
@@ -539,7 +539,7 @@ list.innerHTML = PLACES.map(p=>`
       <div class="strip">
         ${p.scenes.map((s,i)=>`
           <figure data-g="${p.id}" data-i="${i}">
-            <img src="${s.src}" alt="${s.cap}">
+            <img loading="lazy" src="${s.src}" alt="${s.cap}">
             <figcaption>${s.cap}</figcaption>
           </figure>`).join("")}
       </div>
@@ -549,7 +549,7 @@ list.innerHTML = PLACES.map(p=>`
         <h4>具体在哪儿玩<span class="hint">小图为活动示意，开放情况以现场为准</span></h4>
         ${p.spots.map(s=>`
           <div class="spot">
-            ${s.img?`<img class="th" src="${s.img}" alt="${s.n}" data-g="${p.id}">`:""}
+            ${s.img?`<img class="th" loading="lazy" src="${s.img}" alt="${s.n}" data-g="${p.id}">`:""}
             <div class="sn">
               <div class="nm">${s.n}</div>
               <div class="nt">${s.d}</div>
