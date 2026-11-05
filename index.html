@@ -234,22 +234,22 @@
   <div class="in">
     <div class="brand">团建地点参考</div>
     <nav>
-      <a href="#a">周村古商城</a>
-      <a href="#b">文昌湖</a>
-      <a href="#c">凤凰山</a>
-      <a href="#d">玉黛湖</a>
-      <a href="#e">红叶柿岩</a>
+      <a href="#a">韩家窝</a>
+      <a href="#b">豹山乐园</a>
+      <a href="#c">齐都印象</a>
+      <a href="#d">泓基农业</a>
+      <a href="#e">幽幽谷</a>
     </nav>
     <button class="print" onclick="window.print()">打印 / 存 PDF</button>
   </div>
 </div>
 
 <header class="hero">
-  <img src="images/hero.jpg" alt="红叶柿岩红叶季航拍">
+  <img src="images/hero.jpg" alt="中郝峪幽幽谷山村航拍">
   <div class="inner">
-    <div class="eyebrow">淄博周边 · 秋季</div>
+    <div class="eyebrow">淄博周边 · 能吃能玩 · 一日往返</div>
     <h1>团建地点参考</h1>
-    <p>周村古商城 · 文昌湖 · 凤凰山 · 玉黛湖 · 红叶柿岩</p>
+    <p>韩家窝 · 豹山乐园 · 齐都印象 · 泓基农业 · 幽幽谷</p>
     <div class="go"><a href="#a">往下看</a></div>
   </div>
 </header>
@@ -267,13 +267,13 @@
       <div class="fsliders">
         <div class="fvctl">
           <span class="fv-t">车程</span>
-          <input type="range" id="fTime" min="15" max="60" step="5" value="60" aria-label="能接受的车程上限">
-          <output class="fv-val" id="fTimeV">60 分钟+</output>
+          <input type="range" id="fTime" min="15" max="120" step="15" value="120" aria-label="能接受的车程上限">
+          <output class="fv-val" id="fTimeV">120 分钟+</output>
         </div>
         <div class="fvctl">
           <span class="fv-t">人均</span>
-          <input type="range" id="fPrice" min="90" max="230" step="10" value="230" aria-label="能接受的人均花费上限">
-          <output class="fv-val" id="fPriceV">230 元+</output>
+          <input type="range" id="fPrice" min="40" max="150" step="10" value="150" aria-label="能接受的人均花费上限">
+          <output class="fv-val" id="fPriceV">150 元+</output>
         </div>
       </div>
       <div class="fside">
@@ -313,94 +313,105 @@
 <script>
 const PLACES = [
   {
-    id:"a", no:"01", name:"周村古商城", zh:"壹", rec:true, sale:{links:[{l:"官网购票页 ↗",u:"https://www.zhoucungushangcheng.com/menpiaoyuding/"}],note:"周村古商城官网 · 学生证免通票，实时票价以官网与现场为准"},
-    loc:"周村区 · 古商城景区　|　约 8 公里 · 车程约 20 分钟",
-    cover:"images/zhoucun.jpg", coverCap:"周村大街全貌",
-    lede:"一条完整的明清商业街。牌坊、大染坊、票号、烧饼铺都在这条街上，从街头走到街尾，一整套老商业的运作方式就看完了。",
+    id:"a", no:"01", name:"韩家窝村", zh:"壹", rec:true,
+    sale:{note:"村内不设统一门票；彩虹滑道、采摘、餐饮各点位单独收费。团体提前联系村旅游公司 13706436211"},
+    loc:"周村区南郊镇韩家窝村　|　约 10 公里 · 车程约 20 分钟，离校区最近",
+    cover:"images/hanjiawo_cover.jpg", coverCap:"彩虹滑道从山坡直铺到村里",
+    lede:"墨香山下的乡村旅游村。200 亩墨水河景观、荷塘竹林、彩虹滑道、水上餐厅和蒙古包都在村里，吃饭和玩不用来回跑，路上也最省时间。",
     scenes:[
-      {src:"images/a_paifang.jpg", cap:"银子市：古商城里的老街巷，一路都是明清铺面"},
-      {src:"images/a_shaobing.jpg", cap:"周村烧饼：在烧饼博物馆现场看芝麻烧饼怎么打出来"},
-      {src:"images/a_night.jpg", cap:"花灯季的大街：入夜后整条街挂满花灯"}
+      {src:"images/hanjiawo_s1.jpg", cap:"荷塘与木栈道：村口的墨水河景观带"},
+      {src:"images/hanjiawo_s2.jpg", cap:"水上餐厅：沿水的白墙房子，团餐可订"},
+      {src:"images/hanjiawo_s3.jpg", cap:"花田：村边的花海，秋天颜色最好"}
     ],
     spots:[
-      {n:"大街 · 银子市 · 丝市街", d:"主街定向、分组拍照打卡，一条街从头走到尾", t:"学生证免通票"},
-      {n:"周村烧饼博物馆", d:"看师傅现场打烧饼，顺手买伴手礼", t:"免费", img:"images/a_shaobing.jpg"},
-      {n:"大染坊 · 票号展馆", d:"情景式展馆，适合分组跟着讲解走", t:"含在通票"}
+      {n:"彩虹滑道", d:"从山坡铺下来的彩色滑道，单人单次往下滑，最热闹的一项", t:"单独收费", hot:true, img:"images/hanjiawo_t1.jpg"},
+      {n:"水上餐厅 · 蒙古包", d:"沿水餐位和蒙古包，农家菜按桌提前订", t:"需预订", hot:true, img:"images/hanjiawo_t3.jpg"},
+      {n:"荷塘 · 竹林憩园", d:"木栈道、凉亭和竹林，适合分组拍照、坐着歇脚", t:"免费", img:"images/hanjiawo_t2.jpg"},
+      {n:"果蔬采摘大棚", d:"连片 9 个大棚，当季果蔬现摘", t:"按斤称重", img:"images/hanjiawo_t4.jpg"},
+      {n:"鲁派民宿大院", d:"村里整修的民宿院落，可参观也可订住", t:"可预订"}
     ],
-    notice:"驻淄大学生凭学生证免通票；周末游客多，团体要提前在公众号预约。"
+    notice:"滑道、餐厅、采摘是分开经营的，来之前先打电话把项目和餐一起定好；11 月花海谢了，主要玩滑道、采摘和吃饭。"
   },
   {
-    id:"b", no:"02", name:"文昌湖", zh:"贰", rec:true, sale:{note:"环湖区域免费开放，无需购票；营地烧烤、露营位等项目单独收费"},
-    loc:"文昌湖省级旅游度假区　|　约 30 公里 · 车程约 40 分钟",
-    cover:"images/wenchang.jpg", coverCap:"文昌湖湖面",
-    lede:"大片沙滩、开阔湖面和一条贴着湖岸的环湖路，是这几个地方里视野最舒展的，适合只想看看水、走一走的那种活动。",
+    id:"b", no:"02", name:"苏李豹山乐园", zh:"贰",
+    sale:{note:"门票与项目收费以现场为准，水上乐园单独收费；园区由苏李村合作社运营"},
+    loc:"周村区王村镇苏李村　|　约 27 公里 · 车程约 35 分钟",
+    cover:"images/baoshan_cover.jpg", coverCap:"园区航拍：水上乐园、草坪和山坡滑道挤在山谷里",
+    lede:"2A 级乡村景区，占地 400 余亩。水上乐园、萌宠牧场、山坡滑道、采摘园和农耕体验田集中在一个园区，园里有餐饮配套，一张门票串起来玩。",
     scenes:[
-      {src:"images/b_beach.jpg", cap:"湖滨沙滩：天气好的时候沙滩上全是帐篷和遮阳伞"},
-      {src:"images/b_camp.jpg", cap:"湖边露营地：帐篷、天幕、草坪，能坐一下午"},
-      {src:"images/b_road.jpg", cap:"环湖路：徒步、骑行都走这条路"}
+      {src:"images/baoshan_s1.jpg", cap:"水上乐园：漂流河和戏水池，夏季最热闹"},
+      {src:"images/baoshan_s2.jpg", cap:"萌宠牧场：梅花鹿、孔雀都能近距离看"},
+      {src:"images/baoshan_s3.jpg", cap:"园区骑马体验，按圈收费"}
     ],
     spots:[
-      {n:"多米营地烧烤区", d:"湖边营位，烤炉、桌椅到位，食材可自带或让营地代购", t:"需预订", hot:true, img:"images/spot_bbq.jpg"},
-      {n:"湖滨沙滩", d:"沙滩、木栈道，草坪游戏和放风筝都在这一片", t:"免费", img:"images/b_beach.jpg"},
-      {n:"环湖路", d:"贴着湖岸的徒步、骑行线路，边走边看湖", t:"免费", img:"images/b_road.jpg"},
-      {n:"游船码头", d:"11 月起基本停航，想坐船要提前打电话确认", t:"看季节"}
+      {n:"水上乐园", d:"4000 多平方米的戏水区，漂流河、滑道、造浪池", t:"6-9 月开放", hot:true, img:"images/baoshan_t1.jpg"},
+      {n:"萌宠牧场", d:"梅花鹿、孔雀等动物，适合分组互动拍照", t:"看现场", hot:true, img:"images/baoshan_t2.jpg"},
+      {n:"山坡滑道", d:"顺着山坡下来的滑道，排队轮流玩", t:"单独收费"},
+      {n:"骑马体验", d:"园区内的短程骑行，按圈计费", t:"单独收费", img:"images/baoshan_t3.jpg"},
+      {n:"采摘园 · 农耕体验田", d:"当季果蔬采摘和农事体验，研学团队常来这一片", t:"按斤称重", img:"images/baoshan_t4.jpg"},
+      {n:"园区餐饮", d:"园区内有餐饮配套，团餐提前订", t:"需预订"}
     ],
-    notice:"11 月水上项目基本停运，去之前问一下；湖边风大，比市区冷一档。"
+    notice:"水上乐园是季节性项目，11 月以萌宠牧场、滑道、采摘和农耕体验为主；团体来之前先问清开放情况。"
   },
   {
-    id:"c", no:"03", name:"凤凰山", zh:"叁",
-    loc:"周村区南郊镇山头村　|　约 10 公里 · 车程约 15 分钟，离校区最近",
-    cover:"images/fenghuang.jpg", coverCap:"山头村凤凰山下的湖面与山门",
-    lede:"山头村这一片把采摘园、锦鲤基地、农家宴、露营地和凤凰山登山串在了一起，村子本身也整体修过，是几个选项里路上最省时间的。",
+    id:"c", no:"03", name:"齐都印象 · 别墅轰趴", zh:"叁",
+    sale:{links:[{l:"预订页（慢姑娘）↗",u:"http://www.mgnpd.cn/room/details?id=1013"}],note:"整栋按场计价 1280-2980 元/场，日场 10:00-17:00；订场电话 18971141473"},
+    loc:"张店区花山路 · 印象齐都大家境界艺术坊　|　约 17 公里 · 车程约 30 分钟",
+    cover:"images/qidu_cover.jpg", coverCap:"印象齐都文创园：别墅就在艺术坊园区里",
+    lede:"整栋别墅按场包下，日场 10:00-17:00。厨房、餐厅、烧烤架齐全，可以自己做饭，也能让平台配送；KTV、街机、飞镖、星空顶露台够玩一整天，下雨也不受影响。",
     scenes:[
-      {src:"images/c_pick.jpg", cap:"采摘园：秋天正是摘苹果的时候"},
-      {src:"images/c_koi.jpg", cap:"锦鲤观赏基地：池边有木廊和凉亭"},
-      {src:"images/c_village.jpg", cap:"山头村一带：村舍、农田和后面的凤凰山"}
+      {src:"images/qidu_s1.jpg", cap:"艺术坊街区：园区里成排的文创楼，别墅就在其中"},
+      {src:"images/qidu_s2.jpg", cap:"园区里的竹林小院，喝茶、聊天、拍照都合适"},
+      {src:"images/qidu_s3.jpg", cap:"文创园常办汉服、市集类活动，碰上可以一起玩"}
     ],
     spots:[
-      {n:"采摘园", d:"当季果蔬现摘，11 月以苹果和大棚品类为主", t:"看季节", img:"images/c_pick.jpg", tel:"13853355365"},
-      {n:"锦鲤观赏基地", d:"池边木廊和凉亭，参观不收费", t:"免费", img:"images/c_koi.jpg"},
-      {n:"自驾车露营地", d:"草坪营位带水电，白天活动或过夜都行", t:"需预订", hot:true, tel:"16653317739"},
-      {n:"农家宴 · 山头村农家院", d:"土灶大锅炖、柴火菜，按桌提前订", t:"需预订", hot:true, img:"images/spot_nongjia.jpg"},
-      {n:"凤凰山登山步道", d:"从山门广场起步的短途线路，一小时能往返", t:"免费", img:"images/c_village.jpg"}
+      {n:"多功能厅 · KTV", d:"带投影的多功能厅和 KTV，开会、唱歌、玩游戏都在这里", t:"含在场地", hot:true},
+      {n:"烧烤露台", d:"星空顶露台配烧烤架 2 个、柴火炉，户外烧烤自己动手", t:"含在场地", hot:true},
+      {n:"厨房 · 餐厅", d:"厨房和餐厅齐全，可以自己做饭，也可让平台配送餐饮", t:"含在场地"},
+      {n:"娱乐设施", d:"街机、飞镖、棋牌、桌上游戏，分组轮着玩", t:"含在场地"},
+      {n:"园区餐饮", d:"园区里有齐文化主题餐厅和烧烤海鲜大排档，不想做饭可以直接吃", t:"另收费"}
     ],
-    notice:"各点位是分散经营的，要提前串成一条线、逐个确认接待能力；11 月能摘的品类有限。"
+    notice:"按整栋包场计费，人少人均会偏高；烧烤食材可自带，也能用平台的餐饮配送；周末场要早订。"
   },
   {
-    id:"d", no:"04", name:"玉黛湖", zh:"肆",
-    loc:"张店区湖田镇　|　约 25 公里 · 车程约 30 分钟",
-    cover:"images/yudai.jpg", coverCap:"玉黛湖园区与湖面",
-    lede:"生态园、大草坪、湖面和水上长廊餐饮都在同一个园区里，活动怎么排、饭在哪吃都在一个门里解决，组织起来最省心。",
+    id:"d", no:"04", name:"泓基农业采摘园", zh:"肆",
+    sale:{note:"园区电话 0533-8888178 / 18553308903，采摘、垂钓和团餐提前联系"},
+    loc:"桓台县新城镇崔楼村　|　约 13 公里 · 车程约 25 分钟",
+    cover:"images/hongji_cover.jpg", coverCap:"园区航拍：大棚、田块和水塘连成一片",
+    lede:"国家级农民合作社示范社。采摘大棚成片，园区自己的生态餐厅能接团餐，大锅菜实惠管饱；垂钓、农事体验、动物互动这些小项目适合分组轮着玩。",
     scenes:[
-      {src:"images/d_bbq.jpg", cap:"水上长廊：沿湖一排木屋餐位，可以吃饭"},
-      {src:"images/d_lantern.jpg", cap:"冬季花灯：园区每年办灯会，晚上最好看"},
-      {src:"images/d_ski.jpg", cap:"园区滑雪场：11 月下旬后看气温开板"}
+      {src:"images/hongji_s1.jpg", cap:"果棚：秋天能摘到苹果、葡萄这类当季水果"},
+      {src:"images/hongji_s2.jpg", cap:"智慧大棚：棚里有环境监测屏，采摘之外还能看种植"},
+      {src:"images/hongji_s3.jpg", cap:"园区大门：泓基农业的牌子就在路边，好找"}
     ],
     spots:[
-      {n:"园区大草坪", d:"团建游戏、拔河、飞盘的主场地", t:"含在门票"},
-      {n:"水上长廊餐饮区", d:"沿湖一排木屋餐位，团餐提前订", t:"另收费", hot:true, img:"images/d_bbq.jpg"},
-      {n:"冬季花灯会", d:"每年办灯会，夜场最好看", t:"看季节", img:"images/d_lantern.jpg"},
-      {n:"滑雪场", d:"11 月下旬起看气温开板", t:"看季节", img:"images/d_ski.jpg"}
+      {n:"果蔬采摘大棚", d:"连片大棚和果园，当季果蔬现摘", t:"按斤称重", hot:true, img:"images/hongji_t2.jpg"},
+      {n:"生态餐厅", d:"园区自己的餐厅，大锅菜、农家菜按桌订", t:"需预订", hot:true},
+      {n:"垂钓区", d:"水塘里能钓鱼、钓龙虾，适合分组轮换", t:"另收费"},
+      {n:"动物互动 · 农事体验", d:"喂羊、套大鹅、农事体验这类小项目，孩子和学生都喜欢", t:"另收费", img:"images/hongji_t1.jpg"},
+      {n:"葡萄采摘", d:"8 月底到 10 月底是葡萄季，11 月初要打电话确认还有没有", t:"按斤称重", img:"images/hongji_t3.jpg"}
     ],
-    notice:"滑雪场开板看气温，得临近再确认；园区大，最好提前要一张平面图。"
+    notice:"采摘按斤称重，11 月品类以苹果、蔬菜为主；团餐提前一天打电话；园区大，建议先要一张平面图。"
   },
   {
-    id:"e", no:"05", name:"红叶柿岩", zh:"伍", rec:true, sale:{links:[{l:"景区官方介绍 ↗",u:"http://www.sdwenlv.com/content2/show-6063.aspx"}],note:"山东文旅官网 · 门票建议在美团 / 抖音 App 内搜「红叶柿岩」购买"},
-    loc:"博山区域城镇和尚房村　|　约 50 公里 · 车程约 60 分钟",
-    cover:"images/hero.jpg", coverCap:"红叶柿岩红叶季航拍",
-    lede:"一座山把红叶、柿岩古村和山地游乐装在一起，进山不用买大门票，是这个季节视觉冲击力最强的一个。",
+    id:"e", no:"05", name:"中郝峪 · 幽幽谷", zh:"伍", rec:true,
+    sale:{links:[{l:"门票 / 项目（去哪儿）↗",u:"https://touch.piao.qunar.com/touch/detail_3353085592.html"}],note:"门票 29.9 元起，2 小时真人 CS 约 39.9 元，经典套票约 49.9 元；也可在美团搜「幽幽谷」"},
+    loc:"博山区池上镇中郝峪村　|　约 72 公里 · 车程约 90 分钟",
+    cover:"images/zhonghaoyu_cover.jpg", coverCap:"山村全景：整个村子就是景区",
+    lede:"整村做旅游的山村。真人 CS、拓展基地、峡谷漂流、农场牧场和乡村美食课堂都在村里，水上餐厅和农家乐能把一天三顿安排好，玩一整天刚好。",
     scenes:[
-      {src:"images/hongye.jpg", cap:"红叶季：山坡整片变红，山下就是古村"},
-      {src:"images/e_slide.jpg", cap:"玻璃水滑道：从山上盘下来的环形滑道"},
-      {src:"images/e_village.jpg", cap:"柿岩古村：石头房子，晚上亮灯"}
+      {src:"images/zhonghaoyu_s1.jpg", cap:"水上休闲餐厅：水边一排房子，团餐在这里吃"},
+      {src:"images/zhonghaoyu_s2.jpg", cap:"乡村美食课堂：自己动手做博山煎饼、豆腐箱"},
+      {src:"images/zhonghaoyu_s3.jpg", cap:"村边的吊桥和山林，拍照、徒步都走这一片"}
     ],
     spots:[
-      {n:"玻璃水滑道", d:"从山上盘下来的环形玻璃滑道，会溅水", t:"约 80 元", hot:true, img:"images/e_slide.jpg"},
-      {n:"山地滑车", d:"戴头盔自己驾滑车下山，方向速度都能控", t:"约 60 元", hot:true, img:"images/spot_sled.jpg"},
-      {n:"穿越云端彩虹步道", d:"架在山间的彩色步道，穿裙子拖鞋不能上", t:"约 35 元", hot:true, img:"images/spot_cloud.jpg"},
-      {n:"柿岩古村夜游", d:"石头房子亮灯后的夜游线路", t:"免费", img:"images/e_village.jpg"}
+      {n:"真人 CS 基地", d:"2 小时一场，分两队对抗，最费体力也最热闹", t:"约 40 元", hot:true},
+      {n:"幽幽谷拓展基地", d:"拓展培训场地，团体项目要提前预约教练", t:"需预约", hot:true},
+      {n:"水上休闲餐厅", d:"水边餐厅和农家乐，团餐按桌订", t:"需预订", hot:true, img:"images/zhonghaoyu_t1.jpg"},
+      {n:"乡村美食课堂", d:"跟着村民做博山煎饼、豆腐箱，做完直接吃", t:"需预约", img:"images/zhonghaoyu_t2.jpg"},
+      {n:"农场牧场 · 峡谷漂流", d:"农场牧场适合慢慢逛；漂流夏秋开放，11 月停运", t:"看季节"}
     ],
-    notice:"车程最远，来回近两小时；山上风大、台阶多，得穿运动鞋；项目单独收费，涉水项目冬季可能停运。"
+    notice:"车程最远，来回近三小时；11 月漂流停运，CS 和美食课堂要提前预约；山上温度比市区低，得穿运动鞋。"
   }
 ];
 
@@ -457,13 +468,13 @@ document.querySelectorAll(".place").forEach(el=>io.observe(el));
 
 /* 筛选：车程/人均滑条 + 半天/一日切换 + 标签，同时作用于页面区块和地图圆点 */
 const FILTER = {
-  a:{t:20,p:90, h:4, tags:["夜景","免大门票"]},
-  b:{t:40,p:200,h:8, tags:["烧烤","露营","徒步骑行"]},
-  c:{t:15,p:130,h:4, tags:["采摘","农家宴","露营"]},
-  d:{t:30,p:170,h:8, tags:["烧烤","拓展项目","夜景"]},
-  e:{t:60,p:230,h:8, tags:["刺激项目","夜景","免大门票"]}
+  a:{t:20,p:80, h:8, tags:["彩虹滑道","农家菜","采摘"]},
+  b:{t:35,p:70, h:8, tags:["水上乐园","动物互动","采摘"]},
+  c:{t:30,p:110,h:8, tags:["轰趴别墅","烧烤"]},
+  d:{t:25,p:50, h:4, tags:["采摘","农家菜","垂钓"]},
+  e:{t:90,p:110,h:8, tags:["真人CS","拓展","农家菜"]}
 };
-const TAGS = ["烧烤","采摘","露营","农家宴","刺激项目","拓展项目","夜景","免大门票","徒步骑行"];
+const TAGS = ["轰趴别墅","烧烤","农家菜","采摘","彩虹滑道","水上乐园","动物互动","真人CS","拓展","垂钓"];
 const placeMarkers = {};
 const selTags = new Set();
 let durV = 8;
@@ -477,8 +488,8 @@ const fTime = document.getElementById("fTime"),
 
 function applyFilter(){
   const tv = +fTime.value, pv = +fPrice.value;
-  fTimeV.textContent = tv >= 60 ? "60 分钟+" : "≤ " + tv + " 分钟";
-  fPriceV.textContent = pv >= 230 ? "230 元+" : "≤ " + pv + " 元";
+  fTimeV.textContent = tv >= 120 ? "120 分钟+" : "≤ " + tv + " 分钟";
+  fPriceV.textContent = pv >= 150 ? "150 元+" : "≤ " + pv + " 元";
   let m = 0;
   document.querySelectorAll(".place").forEach(el=>{
     const f = FILTER[el.id];
@@ -493,7 +504,7 @@ function applyFilter(){
     }
     if(ok) m++;
   });
-  const idle = tv >= 60 && pv >= 230 && durV === 8 && selTags.size === 0;
+  const idle = tv >= 120 && pv >= 150 && durV === 8 && selTags.size === 0;
   if(idle){
     fStatus.innerHTML = "拖动滑条、点亮标签，筛选地点。";
   }else if(m === 0){
@@ -522,7 +533,7 @@ ftags.addEventListener("click", e=>{
   applyFilter();
 });
 document.getElementById("fReset").addEventListener("click", ()=>{
-  fTime.value = 60; fPrice.value = 230;
+  fTime.value = 120; fPrice.value = 150;
   seg.dataset.v = "8";
   seg.querySelectorAll(".segb").forEach(x=>x.classList.toggle("on", x.dataset.v==="8"));
   durV = 8; selTags.clear();
@@ -598,13 +609,13 @@ if(window.L){
     dLng=(dLng*180)/(a/sq*Math.cos(radLat)*Math.PI);
     return [wgsLat+dLat, wgsLng+dLng];
   }
-  const SCHOOL=[36.817,117.822];   /* 山东农业工程学院淄博校区（示意） */
+  const SCHOOL=[36.8454,117.92933];   /* 山东农业工程学院淄博校区 */
   const SPOTS=[
-    {id:"a", lat:36.803, lng:117.852},
-    {id:"b", lat:36.660, lng:117.865},
-    {id:"c", lat:36.752, lng:117.872},
-    {id:"d", lat:36.832, lng:118.072},
-    {id:"e", lat:36.528, lng:117.815}
+    {id:"a", lat:36.75408, lng:117.87348},
+    {id:"b", lat:36.65718, lng:117.71481},
+    {id:"c", lat:36.83134, lng:118.10470},
+    {id:"d", lat:36.94819, lng:117.98782},
+    {id:"e", lat:36.32290, lng:118.07467}
   ];
   const map=L.map("map",{scrollWheelZoom:false});
   L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
