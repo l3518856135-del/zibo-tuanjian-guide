@@ -172,6 +172,12 @@
   .sale a:hover{border-bottom-color:var(--accent);}
   .sale .sn2{font-size:11.5px;color:var(--muted);}
 
+  .moreven{margin-top:84px;}
+  .moreven h3{font-family:var(--serif);font-weight:600;font-size:22px;margin:0 0 10px;}
+  .moreven p{margin:0 0 16px;font-size:13.5px;color:var(--muted);max-width:780px;}
+  .moreven ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+  .moreven li{padding:13px 0;border-bottom:1px dashed var(--line);font-size:13px;color:#4a443c;line-height:1.7;}
+  .moreven li span{display:inline-block;min-width:110px;font-weight:600;color:var(--ink);}
   footer{margin-top:96px;border-top:1px solid var(--line);padding:30px 0 54px;}
   footer p{margin:0;font-size:12.5px;color:var(--muted);}
 
@@ -246,13 +252,8 @@
       <a href="#a">艾伦庄园</a>
       <a href="#b">齐都印象</a>
       <a href="#c">琇荷轩</a>
-      <a href="#d">水云涧</a>
-      <a href="#e">一网亦家</a>
-      <a href="#f">幽幽谷</a>
-      <a href="#g">远山小筑</a>
-      <a href="#h">惟石山居</a>
-      <a href="#i">潭溪山庄</a>
-      <a href="#j">齐山</a>
+      <a href="#d">一网亦家</a>
+      <a href="#e">木鸟别墅</a>
     </nav>
     <button class="print" onclick="window.print()">打印 / 存 PDF</button>
   </div>
@@ -306,6 +307,20 @@
 </section>
 
 <div id="list"></div>
+
+<section class="moreven">
+  <div class="wrap">
+    <h3>再备几家室内场馆</h3>
+    <p>这几家也是室内为主，但规模、电话和接待条件没完全核实，作为备选先记下来，去之前都要先打电话。</p>
+    <ul>
+      <li><span>上舍度假民宿</span>淄川太河镇上端士村 · 整栋四层，可容 30 人，KTV、投影、棋牌室、厨房、餐厅 · 15275971368</li>
+      <li><span>窥界剧本体验馆</span>周村东街 732 号 · 剧本杀、组队开本 · 15269331659</li>
+      <li><span>荆棘推理馆</span>张店中润大道 66 号芳草地 · 麻将、棋牌、剧本杀、团建拓展 · 电话待确认</li>
+      <li><span>乐梵</span>博山山头路陶缘苑西侧 · 室内场馆 · 电话待确认</li>
+      <li><span>遇见</span>淄川 SM 城市广场 4 楼 · 室内场馆 · 电话待确认</li>
+    </ul>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
@@ -372,37 +387,18 @@ const PLACES = [
     scenes:[
       {src:"images/xhx_v1.jpg", cap:"台球室：标准台球桌，分组打一局"},
       {src:"images/xhx_v2.jpg", cap:"派对布置：灯光气球，适合合影"},
-      {src:"images/xhx_v3.jpg", cap:"室内活动区：沙发、茶几、投影"}
+      {src:"images/xhx_v4.jpg", cap:"KTV 大厅：吊灯吊顶，能唱一整晚"}
     ],
     spots:[
       {n:"台球桌", d:"室内标准台，排队开局", t:"含在场地", hot:true, img:"images/xhx_v1.jpg"},
-      {n:"KTV · 棋牌区", d:"唱歌和打牌分区，互不打扰", t:"含在场地", hot:true},
+      {n:"KTV · 棋牌区", d:"唱歌和打牌分区，互不打扰", t:"含在场地", hot:true, img:"images/xhx_v4.jpg"},
       {n:"街机 · 模拟赛车 · 钢琴", d:"两台街机、赛车模拟器，还有架子鼓和钢琴", t:"含在场地"},
       {n:"自助厨房 · 烧烤", d:"厨房自己做，院子配两个烧烤架", t:"食材另算"}
     ],
     notice:"在临淄，从校区过去约 40 分钟；整栋包场，周末早订。"
   },
   {
-    id:"d", no:"04", name:"水云涧别墅", zh:"肆",
-    sale:{links:[{l:"预订页（慢姑娘）↗",u:"http://www.mgnpd.cn/room/details?id=3025"}],note:"整栋按场计价 1080-2580 元/场；订场电话 19945012578"},
-    loc:"博山区山头街道 · 樵岭前村王母池路一号　|　约 30 公里 · 车程约 55 分钟",
-    cover:"images/syj_cover.jpg", coverCap:"水云涧门头：白楼独栋，在樵岭前村里",
-    lede:"山脚下的独栋别墅，KTV、棋牌、街机、桌上冰球、电竞房都有。院子能烧烤，厨房自己做。缺点是二楼多功能厅只坐得下 16 人，人多要分散到各层玩。",
-    scenes:[
-      {src:"images/syj_v2.jpg", cap:"室内：电视墙和沙发，主力休息区"},
-      {src:"images/syj_v1.jpg", cap:"门头：水云涧的招牌，导航认这个"},
-      {src:"images/syj_v4.jpg", cap:"客房：标间和榻榻米，玩累了能躺"}
-    ],
-    spots:[
-      {n:"KTV · 棋牌", d:"一楼 KTV，二楼棋牌区", t:"含在场地", hot:true, img:"images/syj_v2.jpg"},
-      {n:"街机 · 桌上冰球 · 电竞房", d:"一楼整层娱乐区，还有一间电竞房", t:"含在场地", hot:true},
-      {n:"院子烧烤 · 厨房", d:"院子里能支炉子，厨房自己做", t:"食材另算"},
-      {n:"多功能厅", d:"二楼，只坐得下 16 人，开会要分场", t:"含在场地"}
-    ],
-    notice:"在博山山里，车程比市区别墅远；多功能厅容量小，人多建议分楼层活动。"
-  },
-  {
-    id:"e", no:"05", name:"一网亦家", zh:"伍", rec:true,
+    id:"d", no:"04", name:"一网亦家", zh:"肆", rec:true,
     sale:{note:"800 平方米，可容 70 人；按人计费，档期需电话确认"},
     loc:"张店区重庆路水晶街 E1 座 4 楼　|　约 7 公里 · 车程约 20 分钟",
     cover:"images/yw_cover.jpg", coverCap:"室内大堂：整层场地，进来就是游戏区",
@@ -421,105 +417,25 @@ const PLACES = [
     notice:"在写字楼 4 楼，全程室内；按人头计费，人越多越划算，去之前先电话确认档期。"
   },
   {
-    id:"f", no:"06", name:"中郝峪 · 幽幽谷", zh:"陆",
-    sale:{links:[{l:"门票 / 项目（去哪儿）↗",u:"https://touch.piao.qunar.com/touch/detail_3353085592.html"}],note:"门票 29.9 元起，2 小时真人 CS 约 39.9 元，经典套票约 49.9 元；也可在美团搜「幽幽谷」"},
-    loc:"博山区池上镇中郝峪村　|　约 72 公里 · 车程约 90 分钟",
-    cover:"images/zhonghaoyu_cover.jpg", coverCap:"山村全景：整村做旅游，吃住玩都在村里",
-    lede:"国家级农家乐特色村。真人 CS 分两队对抗，拓展基地有教练带项目，乡村美食课堂能自己动手做博山菜。水上餐厅和村里农家乐解决三餐。",
+    id:"e", no:"05", name:"木鸟·独栋别墅", zh:"伍",
+    sale:{links:[{l:"房源页（木鸟民宿）↗",u:"https://m.muniao.com/h5room/1081557.html"}],note:"368㎡ 联排别墅整栋出租，1980 元/晚；宜住 17 人，麻将、桑拿、棋牌、桌游齐全，可做饭"},
+    loc:"张店区 · 近八大局与高铁北站　|　约 12 公里 · 车程约 25 分钟",
+    cover:"images/mb_cover.jpg", coverCap:"整栋别墅：8 室 4 厅，368 平方米",
+    lede:"整栋联排别墅独享，8 室 4 厅 368 平方米。一楼是大客厅和餐厅，楼上是卧室；麻将桌、桑拿房、棋牌、桌游都有，厨房可以自己做饭。适合想安静打牌、自己张罗一顿饭的队伍。",
     scenes:[
-      {src:"images/zh_v1.jpg", cap:"农家菜：一桌博山菜，团餐按桌订"},
-      {src:"images/zh_v2.jpg", cap:"美食课堂：现场摊博山煎饼"},
-      {src:"images/zh_v3.jpg", cap:"做花馍：分组动手，做完直接吃"},
-      {src:"images/zhonghaoyu_s3.jpg", cap:"村边吊桥和山林，饭后散步拍照"}
+      {src:"images/mb_v1.jpg", cap:"一楼客厅：红木家具，整队人坐得下"},
+      {src:"images/mb_v2.jpg", cap:"楼梯厅：挑高空间，楼上都是房间"},
+      {src:"images/mb_v3.jpg", cap:"卧室：房间多，玩累了能住"},
+      {src:"images/mb_v4.jpg", cap:"双床房：整栋 8 室，住十几人没问题"}
     ],
     spots:[
-      {n:"真人 CS 基地", d:"2 小时一场，分两队对抗", t:"约 40 元", hot:true},
-      {n:"拓展基地", d:"需要教练带项目，提前预约", t:"需预约", hot:true},
-      {n:"乡村美食课堂", d:"做博山煎饼、豆腐箱，做完吃", t:"需预约", img:"images/zh_v2.jpg"},
-      {n:"水上休闲餐厅", d:"水边餐厅，团餐按桌订", t:"需预订", img:"images/zh_v1.jpg"}
+      {n:"一楼大客厅", d:"整队人坐下开会、玩桌游的主场", t:"含在场地", hot:true, img:"images/mb_v1.jpg"},
+      {n:"麻将桌 · 棋牌 · 桌游", d:"麻将桌和棋牌、桌游都在楼里", t:"含在场地", hot:true},
+      {n:"餐厅 · 厨房", d:"厨房可以做饭，餐厅能摆开；也可叫外卖", t:"食材另算", img:"images/mb_cover.jpg"},
+      {n:"桑拿房", d:"别墅自带桑拿，玩完蒸一下", t:"含在场地"},
+      {n:"楼上卧室", d:"8 室 4 厅，人多可以住下", t:"含在场地", img:"images/mb_v3.jpg"}
     ],
-    notice:"车程最远，来回近三小时；CS 和美食课堂要提前预约，山上比市区冷。"
-  },
-  {
-    id:"g", no:"07", name:"远山小筑 · 清风山野", zh:"柒",
-    sale:{note:"整院包场，价格以携程或电话为准；民宿电话 13964314397"},
-    loc:"淄川区洪山镇土峪村　|　约 29 公里 · 车程约 70 分钟",
-    cover:"images/ys_cover.jpg", coverCap:"客厅：原木风加落地窗，整院包下就是这个样子",
-    lede:"山村里的一整院民宿，客厅、餐厨、卧室都是原木风。有棋牌麻将，自助厨房能做饭，旁边自有饭店能订午晚餐，户外还能烧烤。适合想安静打牌、自己做饭的队伍。",
-    scenes:[
-      {src:"images/ys_v1.jpg", cap:"餐厨区：长桌能坐十几人，自己做饭"},
-      {src:"images/ys_v2.jpg", cap:"餐桌：旁边饭店能订餐，也能自己做"},
-      {src:"images/ys_v3.jpg", cap:"卧室：玩累了直接住下"},
-      {src:"images/ys_v4.jpg", cap:"另一间卧室：原木家具，带窗景"}
-    ],
-    spots:[
-      {n:"棋牌麻将", d:"院里配棋牌麻将，随时开局", t:"含在场地", hot:true},
-      {n:"自助厨房 · 长桌", d:"厨房齐全，长桌能坐十几人一起做饭吃", t:"含在场地", hot:true, img:"images/ys_v1.jpg"},
-      {n:"旁边自有饭店", d:"可以预约午晚餐，博山菜和炖菜", t:"另收费", hot:true},
-      {n:"户外烧烤 · 小院", d:"院子里能烧烤，晚上坐着聊天", t:"食材另算"}
-    ],
-    notice:"房间是民宿配置，大团体要分几处活动；整院包场，提前问清能住多少、能做几桌饭。"
-  },
-  {
-    id:"h", no:"08", name:"惟石山居", zh:"捌",
-    sale:{note:"民宿电话 18105333269 / 18553332582；营地烧烤约 100 元/人"},
-    loc:"淄川区太河镇永泉村　|　约 45 公里 · 车程约 85 分钟",
-    cover:"images/ws_cover.jpg", coverCap:"户外温泉泡池：山景配圆池，晚上灯亮最好看",
-    lede:"石头房子改的山居，前面是温泉泡池和露台，室内有落地窗茶室和休息区。自带餐厅和营地，能烧烤、唱 KTV，还能攀岩、登山、滑索。",
-    scenes:[
-      {src:"images/ws_v1.jpg", cap:"落地窗茶室：大面积玻璃，对着山景"},
-      {src:"images/ws_v2.jpg", cap:"室内休息区：长凳圆桌，聊天打牌都行"},
-      {src:"images/ws_v3.jpg", cap:"营地：草坪帐篷，团体烧烤在这片"},
-      {src:"images/ws_v4.jpg", cap:"户外餐桌：院子里摆桌吃饭"}
-    ],
-    spots:[
-      {n:"温泉泡池 · 露台", d:"户外圆池和躺椅，玩累了泡一泡", t:"住客免费", hot:true, img:"images/ws_cover.jpg"},
-      {n:"KTV · 游戏室", d:"室内 KTV 和游戏室，晚上有得玩", t:"含在场地", hot:true},
-      {n:"营地烧烤", d:"营地能支炉子，烧烤约 100 元/人", t:"约 100 元/人", hot:true, img:"images/ws_v3.jpg"},
-      {n:"攀岩 · 滑索 · 登山", d:"户外项目，按现场开放情况", t:"另收费"},
-      {n:"民宿餐厅", d:"店内餐厅，可以订团餐", t:"需预订", img:"images/ws_v4.jpg"}
-    ],
-    notice:"在太河山里，车程 85 分钟左右；温泉和营地按现场开放，团体提前问清包场和餐标。"
-  },
-  {
-    id:"i", no:"09", name:"潭溪山庄", zh:"玖",
-    sale:{note:"餐厅电话 0533-3067009；600 平方米宴会厅加 10 间宴会厅，可容 1000 人用餐"},
-    loc:"淄川区太河镇石沟村　|　约 45 公里 · 车程约 80 分钟",
-    cover:"images/tx_cover.jpg", coverCap:"山庄航拍：依山而建，旁边就是潭溪山",
-    lede:"正经的度假山庄：600 平方米宴会厅、3 间会议室、10 间大小宴会厅，三十来人吃饭开会都够。室内有台球室和大堂，还有掼蛋俱乐部，饭后就能开牌局。",
-    scenes:[
-      {src:"images/tx_v1.jpg", cap:"大堂：水晶灯和大理石地面，接团很体面"},
-      {src:"images/tx_v2.jpg", cap:"台球室：室内标准台，饭后开一局"},
-      {src:"images/tx_v3.jpg", cap:"客房：标间，玩晚了可以住"},
-      {src:"images/tx_v4.jpg", cap:"潭溪山湖景：山庄门口就是景区"}
-    ],
-    spots:[
-      {n:"宴会厅 · 会议室", d:"600 平方米主宴会厅加 3 间会议室，三十来人随便坐", t:"需预订", hot:true, img:"images/tx_v1.jpg"},
-      {n:"掼蛋俱乐部", d:"专门打掼蛋和棋牌的区域", t:"含在场地", hot:true},
-      {n:"台球室", d:"室内台球桌，饭后就能玩", t:"含在场地", img:"images/tx_v2.jpg"},
-      {n:"山庄餐厅", d:"山珍野味和农家菜，团餐按桌订", t:"需预订", hot:true},
-      {n:"木屋别墅 · 客房", d:"生态木屋别墅 13 栋，可住可玩", t:"需预订", img:"images/tx_v3.jpg"}
-    ],
-    notice:"在淄川太河，车程 80 分钟左右；宴会厅和会议室按场预订，团餐提前一天定。"
-  },
-  {
-    id:"j", no:"10", name:"齐山度假村", zh:"拾",
-    sale:{note:"度假村提供餐饮、会议、拓展、野营；民宿床位 50 张，会议室可坐 30 多人"},
-    loc:"淄川区太河镇 · 齐山风景区　|　约 45 公里 · 车程约 80 分钟",
-    cover:"images/qs_cover.jpg", coverCap:"山顶建筑群：度假村就建在齐山景区里",
-    lede:"建在齐山景区里的度假村，会议室能坐 30 多人，餐厅做乡土农家菜，还能安排拓展和野营。白天爬山看齐长城，晚上回度假村吃饭打牌。",
-    scenes:[
-      {src:"images/qs_v1.jpg", cap:"齐山牌坊：景区入口，度假村在里头"},
-      {src:"images/qs_v2.jpg", cap:"景区游乐区：图腾柱和小火车，团建游戏场地"},
-      {src:"images/qs_v3.jpg", cap:"齐山山水：峡谷和水库，徒步看景"}
-    ],
-    spots:[
-      {n:"会议室", d:"可坐 30 多人，配投影和无线话筒", t:"需预订", hot:true},
-      {n:"度假村餐厅", d:"乡土农家菜，能开 3-4 桌", t:"需预订", hot:true},
-      {n:"拓展 · 野营", d:"度假村可安排拓展和野营项目", t:"需预约"},
-      {n:"齐山登山 · 齐长城", d:"景区徒步线路和齐长城遗址", t:"含门票", img:"images/qs_v3.jpg"}
-    ],
-    notice:"在淄川太河，车程 80 分钟左右；登山要穿运动鞋，会议室和团餐提前订。"
+    notice:"个人房东整栋出租，按晚计价；聚会、做饭要提前和房东说清人数和时间。"
   }
 ];
 
@@ -579,15 +495,10 @@ const FILTER = {
   a:{t:20,p:80, h:8, tags:["KTV","棋牌","街机","厨房自助"]},
   b:{t:30,p:100,h:8, tags:["KTV","棋牌","街机","烧烤"]},
   c:{t:40,p:80, h:8, tags:["KTV","台球","棋牌","街机"]},
-  d:{t:55,p:85, h:8, tags:["KTV","棋牌","街机","烧烤"]},
-  e:{t:20,p:90, h:8, tags:["KTV","台球","棋牌","街机","剧本杀"]},
-  f:{t:90,p:110,h:8, tags:["真人CS","厨房自助"]},
-  g:{t:70,p:100,h:8, tags:["棋牌","厨房自助","烧烤"]},
-  h:{t:85,p:100,h:8, tags:["KTV","烧烤","营地"]},
-  i:{t:80,p:90, h:8, tags:["台球","棋牌","会议室"]},
-  j:{t:80,p:80, h:8, tags:["会议室","营地"]}
+  d:{t:20,p:90, h:8, tags:["KTV","台球","棋牌","街机","剧本杀"]},
+  e:{t:25,p:70, h:8, tags:["棋牌","厨房自助","桑拿"]}
 };
-const TAGS = ["KTV","台球","棋牌","街机","剧本杀","真人CS","烧烤","厨房自助","会议室","营地"];
+const TAGS = ["KTV","台球","棋牌","街机","剧本杀","厨房自助","烧烤","桑拿"];
 const placeMarkers = {};
 const selTags = new Set();
 let durV = 8;
@@ -727,13 +638,8 @@ if(window.L){
     {id:"a", lat:36.78073, lng:117.88134},
     {id:"b", lat:36.83134, lng:118.10470},
     {id:"c", lat:36.85356, lng:118.35004},
-    {id:"d", lat:36.45269, lng:117.80864},
-    {id:"e", lat:36.81680, lng:117.99760},
-    {id:"f", lat:36.32290, lng:118.07467},
-    {id:"g", lat:36.57604, lng:118.03362},
-    {id:"h", lat:36.42295, lng:118.13694},
-    {id:"i", lat:36.49495, lng:118.19698},
-    {id:"j", lat:36.51535, lng:118.18622}
+    {id:"d", lat:36.81680, lng:117.99760},
+    {id:"e", lat:36.83600, lng:117.98400}
   ];
   const map=L.map("map",{scrollWheelZoom:false});
   L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
