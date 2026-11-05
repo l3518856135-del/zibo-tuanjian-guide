@@ -255,7 +255,6 @@
       <a href="#d">一网亦家</a>
       <a href="#e">坛井院子</a>
       <a href="#f">蝎子山</a>
-      <a href="#g">济南西站别墅</a>
       <a href="#h">历城别墅</a>
     </nav>
     <button class="print" onclick="window.print()">打印 / 存 PDF</button>
@@ -459,27 +458,7 @@ const PLACES = [
     notice:"在济南市中区，车程 100 分钟左右；整栋按晚计价，提前和房东确认人数。"
   },
   {
-    id:"g", no:"07", name:"济南西站别墅", zh:"柒",
-    sale:{links:[{l:"房源页（木鸟民宿）↗",u:"https://m.muniao.com/h5room/431750.html"}],note:"400㎡ 独栋带花园，宜住 20 人，约 458 元/晚；台球、街机、XBOX、麻将机 2 部、大厨房"},
-    loc:"济南槐荫区 · 近济南西站　|　约 120 公里 · 车程约 110 分钟",
-    cover:"images/jz_cover.jpg", coverCap:"台球厅：整栋别墅的一层",
-    lede:"400 平方米带花园的独栋，房东写明私密性强，整栋只有你们一队人。一层是台球厅和麻将室，还有街机、XBOX 和各类桌游；大厨房能自己做饭，院子里能烧烤。",
-    scenes:[
-      {src:"images/jz_v1.jpg", cap:"麻将室：吊灯下两台麻将机"},
-      {src:"images/jz_v2.jpg", cap:"桌上足球：两人一组轮着打"},
-      {src:"images/jz_v3.jpg", cap:"台球桌：室内标准台"},
-      {src:"images/jz_v4.jpg", cap:"客厅：沙发和电视，休息区"}
-    ],
-    spots:[
-      {n:"台球厅", d:"标准台球桌，分组开局", t:"含在场地", hot:true, img:"images/jz_cover.jpg"},
-      {n:"麻将室 · 桌游", d:"两台麻将机，桌游、街机、XBOX 都有", t:"含在场地", hot:true, img:"images/jz_v1.jpg"},
-      {n:"大厨房 · 花园烧烤", d:"DIY 厨房自己做饭，院子里能烧烤", t:"食材另算", hot:true},
-      {n:"独栋私密空间", d:"整栋包下，不会有其他客人", t:"含在场地", img:"images/jz_v4.jpg"}
-    ],
-    notice:"在济南西站附近，车程 110 分钟左右；整栋按晚计价，加人要提前和房东说。"
-  },
-  {
-    id:"h", no:"08", name:"历城别墅", zh:"捌",
+    id:"h", no:"07", name:"历城别墅", zh:"柒",
     sale:{links:[{l:"房源页（木鸟民宿）↗",u:"https://m.muniao.com/h5room/1267563.html"}],note:"500㎡ 10 室 5 厅，宜住 26 人，约 2087 元/晚；全景落地窗、可做饭、烧烤"},
     loc:"济南历城区 · 仲宫上海街　|　约 100 公里 · 车程约 100 分钟",
     cover:"images/lc_cover.jpg", coverCap:"整栋外观：三层独栋，带院落",
@@ -558,7 +537,6 @@ const FILTER = {
   d:{t:20, p:90, h:8, tags:["KTV","台球","棋牌","剧本杀","电竞"]},
   e:{t:70, p:90, h:8, tags:["KTV","棋牌","烧烤","泳池"]},
   f:{t:100,p:70, h:8, tags:["台球","桌游","剧本杀"]},
-  g:{t:110,p:50, h:8, tags:["台球","棋牌","厨房自助","烧烤"]},
   h:{t:100,p:80, h:8, tags:["棋牌","厨房自助","烧烤"]}
 };
 const TAGS = ["KTV","台球","棋牌","桌游","剧本杀","电竞","烧烤","厨房自助","泳池"];
@@ -704,7 +682,6 @@ if(window.L){
     {id:"d", lat:36.81680, lng:117.99760},
     {id:"e", lat:36.64892, lng:117.57979},
     {id:"f", lat:36.60204, lng:117.02454},
-    {id:"g", lat:36.66944, lng:116.88683},
     {id:"h", lat:36.50600, lng:117.04300}
   ];
   const map=L.map("map",{scrollWheelZoom:false});
