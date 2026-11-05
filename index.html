@@ -253,7 +253,11 @@
       <a href="#b">齐都印象</a>
       <a href="#c">琇荷轩</a>
       <a href="#d">一网亦家</a>
-      <a href="#e">木鸟别墅</a>
+      <a href="#e">坛井院子</a>
+      <a href="#f">青苔小院</a>
+      <a href="#g">竹隐别墅</a>
+      <a href="#h">见山结庐</a>
+      <a href="#i">蝎子山别墅</a>
     </nav>
     <button class="print" onclick="window.print()">打印 / 存 PDF</button>
   </div>
@@ -417,25 +421,103 @@ const PLACES = [
     notice:"在写字楼 4 楼，全程室内；按人头计费，人越多越划算，去之前先电话确认档期。"
   },
   {
-    id:"e", no:"05", name:"木鸟·独栋别墅", zh:"伍",
-    sale:{links:[{l:"房源页（木鸟民宿）↗",u:"https://m.muniao.com/h5room/1081557.html"}],note:"368㎡ 联排别墅整栋出租，1980 元/晚；宜住 17 人，麻将、桑拿、棋牌、桌游齐全，可做饭"},
-    loc:"张店区 · 近八大局与高铁北站　|　约 12 公里 · 车程约 25 分钟",
-    cover:"images/mb_cover.jpg", coverCap:"整栋别墅：8 室 4 厅，368 平方米",
-    lede:"整栋联排别墅独享，8 室 4 厅 368 平方米。一楼是大客厅和餐厅，楼上是卧室；麻将桌、桑拿房、棋牌、桌游都有，厨房可以自己做饭。适合想安静打牌、自己张罗一顿饭的队伍。",
+    id:"e", no:"05", name:"坛井院子", zh:"伍", rec:true,
+    sale:{note:"整院预订，价格以携程或电话为准；院子电话 15610318918"},
+    loc:"济南章丘 · 朱家峪景区内　|　约 50 公里 · 车程约 70 分钟",
+    cover:"images/tj_cover.jpg", coverCap:"四合院院落：石墙围起来的一整院",
+    lede:"朱家峪古村边上的四合院民宿，整院包下。院里有凉亭和石桌，室外带泳池，晚上亮灯最好看；屋里有 KTV、棋牌室、茶室，餐厅能摆开二十人，还能自助烧烤。",
     scenes:[
-      {src:"images/mb_v1.jpg", cap:"一楼客厅：红木家具，整队人坐得下"},
-      {src:"images/mb_v2.jpg", cap:"楼梯厅：挑高空间，楼上都是房间"},
-      {src:"images/mb_v3.jpg", cap:"卧室：房间多，玩累了能住"},
-      {src:"images/mb_v4.jpg", cap:"双床房：整栋 8 室，住十几人没问题"}
+      {src:"images/tj_v1.jpg", cap:"石墙庭院：院内石桌、绿植，坐着聊天"},
+      {src:"images/tj_v2.jpg", cap:"室外泳池：晚上灯光打开，最适合拍照"},
+      {src:"images/tj_v3.jpg", cap:"夜里的露台长桌：烧烤和聚餐都在这"}
     ],
     spots:[
-      {n:"一楼大客厅", d:"整队人坐下开会、玩桌游的主场", t:"含在场地", hot:true, img:"images/mb_v1.jpg"},
-      {n:"麻将桌 · 棋牌 · 桌游", d:"麻将桌和棋牌、桌游都在楼里", t:"含在场地", hot:true},
-      {n:"餐厅 · 厨房", d:"厨房可以做饭，餐厅能摆开；也可叫外卖", t:"食材另算", img:"images/mb_cover.jpg"},
-      {n:"桑拿房", d:"别墅自带桑拿，玩完蒸一下", t:"含在场地"},
-      {n:"楼上卧室", d:"8 室 4 厅，人多可以住下", t:"含在场地", img:"images/mb_v3.jpg"}
+      {n:"四合院 · 庭院", d:"整院独享，凉亭、石桌、花坛都在院里", t:"含在场地", hot:true, img:"images/tj_v1.jpg"},
+      {n:"棋牌室 · KTV", d:"室内棋牌和 KTV，晚上不用出门", t:"含在场地", hot:true},
+      {n:"室外泳池", d:"院子里带泳池，天气好能下水", t:"含在场地", img:"images/tj_v2.jpg"},
+      {n:"餐厅 · 自助烧烤", d:"餐厅能坐二十人，也能自己支炉子烧烤", t:"需预订", hot:true, img:"images/tj_v3.jpg"}
     ],
-    notice:"个人房东整栋出租，按晚计价；聚会、做饭要提前和房东说清人数和时间。"
+    notice:"在章丘朱家峪景区里，车程 70 分钟左右；整院预订要提前问清餐标和烧烤炉具。"
+  },
+  {
+    id:"f", no:"06", name:"青苔小院", zh:"陆",
+    sale:{note:"青州庙子镇杨集村，电话 15224445301 / 15615963476；餐饮和住宿可一起订"},
+    loc:"潍坊青州 · 庙子镇杨集村　|　约 46 公里 · 车程约 75 分钟",
+    cover:"images/qt_cover.jpg", coverCap:"餐厅大圆桌：能摆开几桌农家菜",
+    lede:"山里的一处院子，前后几进：餐厅是十几人的大圆桌，旁边有酒吧和咖啡区，院里有凉亭和烧烤位。KTV、茶室、会议室都配了，适合边吃边玩待一整天。",
+    scenes:[
+      {src:"images/qt_v1.jpg", cap:"窗边餐厅：大圆桌，几桌人一起吃"},
+      {src:"images/qt_v2.jpg", cap:"酒吧吧台：晚上在这聊天喝酒"},
+      {src:"images/qt_v3.jpg", cap:"院子凉亭：石桌石凳，山景就在旁边"},
+      {src:"images/qt_v4.jpg", cap:"院子烧烤位：柴火和烤炉都能用"}
+    ],
+    spots:[
+      {n:"大圆桌餐厅", d:"能摆开几桌农家菜，团餐提前订", t:"需预订", hot:true, img:"images/qt_v1.jpg"},
+      {n:"KTV · 茶室 · 会议室", d:"室内娱乐都在主楼里", t:"含在场地", hot:true},
+      {n:"院子凉亭 · 烧烤", d:"院子里有凉亭和烧烤位", t:"食材另算", img:"images/qt_v3.jpg"},
+      {n:"酒吧 · 咖啡区", d:"饭后在这坐着聊", t:"另收费", img:"images/qt_v2.jpg"}
+    ],
+    notice:"在青州西南山里，车程 75 分钟左右；山路弯多，包车要留出时间。"
+  },
+  {
+    id:"g", no:"07", name:"竹隐别墅", zh:"柒",
+    sale:{note:"五居室独栋，整栋预订；电话 18753618198"},
+    loc:"潍坊青州 · 云门山街道林语山庄　|　约 55 公里 · 车程约 70 分钟",
+    cover:"images/zy_cover.jpg", coverCap:"独栋别墅外观：山脚下的一栋小楼",
+    lede:"五居室独栋别墅，整栋住下十几人没问题。楼下是多功能厅和餐厅，楼上是卧室，露台能看到山景；有棋牌室，厨房可以自己做饭。",
+    scenes:[
+      {src:"images/zy_v1.jpg", cap:"多功能厅：榻榻米加长桌，开会和桌游"},
+      {src:"images/zy_v2.jpg", cap:"餐厅：长桌配整面窗，吃饭看山"},
+      {src:"images/zy_v3.jpg", cap:"露台：遮阳伞和桌椅，天气好能坐外面"},
+      {src:"images/zy_v4.jpg", cap:"客厅：沙发和落地窗"}
+    ],
+    spots:[
+      {n:"多功能厅 · 客厅", d:"榻榻米和长桌，分组玩游戏", t:"含在场地", hot:true, img:"images/zy_v1.jpg"},
+      {n:"棋牌室", d:"独立棋牌室，随时开局", t:"含在场地", hot:true},
+      {n:"厨房 · 餐厅", d:"厨房可以做饭，餐厅长桌能摆开", t:"食材另算", img:"images/zy_v2.jpg"},
+      {n:"观景露台", d:"露台对着山，傍晚最好看", t:"含在场地", img:"images/zy_v3.jpg"}
+    ],
+    notice:"五居室，住宿十几人，人多要分住附近；整栋预订，提前问清能不能做饭和烧烤。"
+  },
+  {
+    id:"h", no:"08", name:"见山结庐", zh:"捌",
+    sale:{note:"胡山森林公园内，电话 18660169078；餐厅和棋牌室可订"},
+    loc:"济南章丘 · 胡山省级森林公园　|　约 50 公里 · 车程约 70 分钟",
+    cover:"images/js_cover.jpg", coverCap:"四合院院子：石阶、绿植和一圈平房",
+    lede:"建在胡山森林公园里的四合院，院子用石头围起来，中间有水景和绿植。室内是原木加暖光，有大圆桌餐厅、客厅和棋牌室，还能订 KTV 和派对场地。",
+    scenes:[
+      {src:"images/js_v1.jpg", cap:"大圆桌餐厅：一整张大桌，十几人围坐"},
+      {src:"images/js_v2.jpg", cap:"客厅：原木长桌和沙发，聊天打牌"},
+      {src:"images/js_v3.jpg", cap:"建筑与院子：夜色里的四合院"},
+      {src:"images/js_v4.jpg", cap:"室内休息区：落地窗对着院子"}
+    ],
+    spots:[
+      {n:"大圆桌餐厅", d:"一张大圆桌，团餐和宴席都能接", t:"需预订", hot:true, img:"images/js_v1.jpg"},
+      {n:"棋牌室 · KTV", d:"室内棋牌、KTV 都有", t:"需预约", hot:true},
+      {n:"四合院 · 院子", d:"石阶、水景、绿植，适合拍照", t:"含在场地", img:"images/js_cover.jpg"},
+      {n:"客厅 · 休息区", d:"原木客厅，分组聊天、玩桌游", t:"含在场地", img:"images/js_v2.jpg"}
+    ],
+    notice:"在森林公园里，车程 70 分钟左右；院内以餐饮和住宿为主，娱乐项目要提前预约。"
+  },
+  {
+    id:"i", no:"09", name:"蝎子山别墅", zh:"玖",
+    sale:{links:[{l:"房源页（木鸟民宿）↗",u:"https://m.muniao.com/h5room/204703.html"}],note:"500㎡ 独栋整租，宜住 23 人；台球、桌上足球、长桌、榻榻米"},
+    loc:"济南市中区 · 舜世路与二环南路　|　约 95 公里 · 车程约 100 分钟",
+    cover:"images/xz_cover.jpg", coverCap:"主题厅：整栋别墅的一层活动区",
+    lede:"500 平方米独栋别墅，整栋包下。一层是客厅和游戏区：台球桌、桌上足球、长桌和榻榻米房；楼上都是卧室，住二十多人没问题。厨房可以做饭，附近也能叫外卖。",
+    scenes:[
+      {src:"images/xz_v1.jpg", cap:"台球桌：室内标准台，分组开局"},
+      {src:"images/xz_v2.jpg", cap:"长桌区：桌游、剧本杀、开会都在这"},
+      {src:"images/xz_v3.jpg", cap:"客厅：电视墙和沙发，休息区"},
+      {src:"images/xz_v4.jpg", cap:"桌上足球：两人一组，轮着打"}
+    ],
+    spots:[
+      {n:"台球 · 桌上足球", d:"两张台球桌和桌上足球，分组轮换", t:"含在场地", hot:true, img:"images/xz_v1.jpg"},
+      {n:"长桌 · 榻榻米房", d:"长桌玩桌游、剧本杀，榻榻米房能坐一圈", t:"含在场地", hot:true, img:"images/xz_v2.jpg"},
+      {n:"客厅 · 娱乐区", d:"一层整层是活动区", t:"含在场地", img:"images/xz_v3.jpg"},
+      {n:"厨房 · 卧室", d:"厨房能做饭，楼上房间能住二十多人", t:"食材另算"}
+    ],
+    notice:"在济南市中区，车程 100 分钟左右，是几个里最远的；整栋按晚计价，提前和房东确认人数。"
   }
 ];
 
@@ -492,13 +574,17 @@ document.querySelectorAll(".place").forEach(el=>io.observe(el));
 
 /* 筛选：车程/人均滑条 + 半天/一日切换 + 标签，同时作用于页面区块和地图圆点 */
 const FILTER = {
-  a:{t:20,p:80, h:8, tags:["KTV","棋牌","街机","厨房自助"]},
-  b:{t:30,p:100,h:8, tags:["KTV","棋牌","街机","烧烤"]},
-  c:{t:40,p:80, h:8, tags:["KTV","台球","棋牌","街机"]},
-  d:{t:20,p:90, h:8, tags:["KTV","台球","棋牌","街机","剧本杀"]},
-  e:{t:25,p:70, h:8, tags:["棋牌","厨房自助","桑拿"]}
+  a:{t:20, p:80, h:8, tags:["KTV","棋牌","厨房自助"]},
+  b:{t:30, p:100,h:8, tags:["KTV","棋牌","烧烤"]},
+  c:{t:40, p:80, h:8, tags:["KTV","台球","棋牌"]},
+  d:{t:20, p:90, h:8, tags:["KTV","台球","棋牌","剧本杀","电竞"]},
+  e:{t:70, p:90, h:8, tags:["KTV","棋牌","烧烤","泳池"]},
+  f:{t:75, p:90, h:8, tags:["KTV","棋牌","烧烤"]},
+  g:{t:70, p:100,h:8, tags:["棋牌","厨房自助"]},
+  h:{t:70, p:110,h:8, tags:["KTV","棋牌","厨房自助"]},
+  i:{t:100,p:70, h:8, tags:["台球","桌游","剧本杀"]}
 };
-const TAGS = ["KTV","台球","棋牌","街机","剧本杀","厨房自助","烧烤","桑拿"];
+const TAGS = ["KTV","台球","棋牌","桌游","剧本杀","电竞","烧烤","厨房自助","泳池"];
 const placeMarkers = {};
 const selTags = new Set();
 let durV = 8;
@@ -639,7 +725,11 @@ if(window.L){
     {id:"b", lat:36.83134, lng:118.10470},
     {id:"c", lat:36.85356, lng:118.35004},
     {id:"d", lat:36.81680, lng:117.99760},
-    {id:"e", lat:36.83600, lng:117.98400}
+    {id:"e", lat:36.64892, lng:117.57979},
+    {id:"f", lat:36.49542, lng:118.24752},
+    {id:"g", lat:36.62134, lng:118.46920},
+    {id:"h", lat:36.66109, lng:117.55815},
+    {id:"i", lat:36.60204, lng:117.02454}
   ];
   const map=L.map("map",{scrollWheelZoom:false});
   L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
